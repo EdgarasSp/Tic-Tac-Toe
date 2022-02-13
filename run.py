@@ -13,4 +13,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Tic-Tac-Toe-Data')
 
-data = SHEET.worksheet('game_data')
+game_data = SHEET.worksheet('game_data')
+
+data = game_data.get_all_values()
+
+print(data)
