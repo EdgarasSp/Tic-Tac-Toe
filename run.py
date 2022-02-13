@@ -14,7 +14,29 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Tic-Tac-Toe-Data')
 
 game_data = SHEET.worksheet('game_data')
-
 data = game_data.get_all_values()
 
-print(F'Heroku Test: {data}')
+def logo():
+    """
+    Game Logo Tic-Tac-Toe-Test text
+    """
+    print("""
+     ______                   ______                   
+    /\__  _\__               /\__  _\                  
+    \/_/\ \/\_\    ___       \/_/\ \/    __      ___   
+       \ \ \/\ \  / ___\        \ \ \  /'__`\   / ___\ 
+        \ \ \ \ \/\ \__/         \ \ \/\ \_\.\_/\ \__/ 
+         \ \_\ \_\ \____\         \ \_\ \__/.\_\ \____\ 
+          \/_/\/_/\/____/          \/_/\/__/\/_/\/____/
+                                                       
+                                                       
+                  ______                  
+                 /\__  _\                 
+                 \/_/\ \/   ___      __   
+                    \ \ \  / __`\  /'__`\ 
+                     \ \ \/\ \_\ \/\  __/ 
+                      \ \_\ \____/\ \____\ 
+                       \/_/\/___/  \/____/                                                 
+  """)
+
+logo()
