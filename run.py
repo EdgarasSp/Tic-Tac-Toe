@@ -29,9 +29,9 @@ def clear_terminal():
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def logo():
+def main_logo():
     """
-    ACII Game Logo "Tic-Tac-Toe"
+    ACII Main Logo "Tic-Tac-Toe"
     """
     print("""
                ______                   ______                   
@@ -56,7 +56,7 @@ def main_page():
     """
 
     clear_terminal()
-    logo()
+    main_logo()
     sleep(delay*2)
     print("                                    WELCOME\n")
     sleep(delay*2)
@@ -79,13 +79,13 @@ def main_page():
 
         else:
             clear_terminal()
-            logo()
+            main_logo()
             print("                                      UPS\n ")
-            print("           Not a valid input... your options are [s], [l] or [i] \n")
+            print("                 Invalid input... options: [S], [L] or [I] \n")
             print("                          Returning to the Menu...\n ")
             sleep(delay*10)
             clear_terminal()
-            logo()
+            main_logo()
             sleep(delay)
             print("                                LET'S TRY AGAIN\n")
             sleep(delay)
