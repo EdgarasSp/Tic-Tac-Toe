@@ -77,6 +77,19 @@ def leaderboard_logo():
          |_____\___|\__,_|\__,_|\___|_|  |_.__/ \___/ \__,_|_|  \__,_|                                             
   """)
 
+def game_logo():
+    """
+    ACII game Logo
+    """
+    print("""
+                 _____ _         _____             _____          
+                |_   _(_) ___   |_   _|_ _  ___   |_   _|__   ___ 
+                  | | | |/ __|    | |/ _` |/ __|    | |/ _ \ / _ \ 
+                  | | | | (__     | | (_| | (__     | | (_) |  __/
+                  |_| |_|\___|    |_|\__,_|\___|    |_|\___/ \___|
+                                                                                                     
+  """)
+
 def main_page():
     """
     Request player to confirm if play, view leaderboard or read instructions
@@ -95,6 +108,7 @@ def main_page():
     while not valid_input:
         if first.lower() == "s":
             valid_input = True
+            player_name()
 
         elif first.lower() == "l":
             valid_input = True
@@ -131,7 +145,6 @@ def leaderboards_page():
     input("   Press Enter to continue...\n")
 
     main_page()
-
 
 def instrunctions_page():
     """
@@ -224,5 +237,33 @@ def instrunctions_page():
     clear_terminal()
     main_page()
 
+def player_name():
+    """
+    Request player's name, name used in game and leaderboards for tracking
+    """
+    global player_name
+
+    clear_terminal()
+    game_logo()
+    sleep(delay)
+    print("                  What is your name or aliace? (2-6 characters)\n")
+    sleep(delay)
+    player_name = input("                                      Name: ")
+    while not len(player_name) >1 or not len(player_name) <6:
+        clear_terminal()
+        game_logo()
+        sleep(delay)
+        print("                                      UPS...\n ")
+        print("                   You have entered invalid number of characters \n")
+        print("            Please enter your name or aliace again, between 2-6 characters.\n")
+        sleep(delay)
+        player_name = input("                                      Name: ")
+        
+    clear_terminal()
+    game_logo()
+    sleep(delay)
+    print(F"                              Welcome to the game {player_name}! \n") # TD bus run choose name
+    sleep(delay*5)    
+    main_page() # TBC Replace with Game selection
 
 main_page()
