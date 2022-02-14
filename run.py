@@ -1,3 +1,4 @@
+import os # to use clear terminal function
 import gspread
 from google.oauth2.service_account import Credentials
 import random
@@ -16,9 +17,16 @@ SHEET = GSPREAD_CLIENT.open('Tic-Tac-Toe-Data')
 game_data = SHEET.worksheet('game_data')
 data = game_data.get_all_values()
 
+
+def clear_terminal():
+    """
+    Clear terminal to give new page loaded feal
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def logo():
     """
-    Game Logo Tic-Tac-Toe-Test text
+    ACII Game Logo "Tic-Tac-Toe"
     """
     print("""
      ______                   ______                   
