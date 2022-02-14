@@ -16,7 +16,9 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Tic-Tac-Toe-Data')
 
 game_data = SHEET.worksheet('game_data')
+game_data = SHEET.worksheet('leaderboard')
 data = game_data.get_all_values()
+leaderboard = game_data.get_all_values()
 
 
 # Variables
@@ -125,7 +127,7 @@ def leaderboards_page():
     leaderboard_logo()
     sleep(delay)
     print("   Top 10 game streaks\n")
-    
+    print(leaderboard)
     input("   Press Enter to continue...\n")
 
     main_page()
