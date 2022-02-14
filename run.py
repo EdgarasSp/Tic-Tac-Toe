@@ -22,6 +22,7 @@ data = game_data.get_all_values()
 # Variables
 
 delay = 0.3
+delay_short = 0.15
 
 def clear_terminal():
     """
@@ -138,10 +139,39 @@ def instrunctions_page():
     instructions_logo()
     sleep(delay)
 
-    print("   Tic Tac Toe is a simple 'x' and 'o' game")
+    print("                                    OBJECTIVE:\n")
+    sleep(delay)
+    print("            The object of Tic Tac Toe is to get three, four or five in a row. \n")
+    sleep(delay_short)
+    print("            The first player is known as X and the second is O. \n")
+    sleep(delay_short)
+    print("            Players alternate placing 'X' and 'O' on the game board until either - \n")
+    sleep(delay_short)
+    print("            opponent has three, four or five in a row or all squares are filled. \n")
+    sleep(delay_short)
+    print("            X always goes first, and in the event that no one has a set in a row, \n")
+    sleep(delay_short)
+    print("            game declares a draw. \n")
+    sleep(delay*3)
+
+    input("\n                           [Return] Enter to continue...\n")
+
+    clear_terminal()
+    instructions_logo()
     sleep(delay)
 
-    input("   Press Enter to continue...\n")
+    print("                                        SETUP:\n")
+    sleep(delay)
+    print("        NAME: Enter your name, it will be displayed in the game and leaderboard. \n")
+    sleep(delay_short)
+    print("        GRID SIZE: Choose the size of the grid Easy (3x3), Medium (4x4) or Hard (5x5). \n")
+    sleep(delay_short)
+    print("        ORDER: Choose who should start the game, the player or the computer.\n")
+    sleep(delay_short)
+    print("        Remember, whoever goes first, will be assigned 'X' as a 'X' always starts the game. \n")
+    sleep(delay*3)
+
+    input("\n                           [Return] Enter to continue...\n")
 
     main_page()
 
