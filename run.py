@@ -262,8 +262,52 @@ def player_name():
     clear_terminal()
     game_logo()
     sleep(delay)
-    print(F"                              Welcome to the game {player_name}! \n") # TD bus run choose name
+    print(F"                              Welcome to the game {player_name}! \n")
     sleep(delay*5)    
-    main_page() # TBC Replace with Game selection
+    select_game()
+
+def select_game(): 
+    """
+    Asks player to select game dificulty
+    """
+    global dificulty
+
+    clear_terminal()
+    game_logo()
+    sleep(delay)
+    print(F"                         {player_name}, choose games dificulty level:\n")
+    sleep(delay)
+    input_text = "                            [E] Easy Mode    (3x3) Grid \n                            [M] Medium Mode  (4x4) Grid \n                            [H] Hard Mode    (5x5) Grid\n"
+    dificulty = input(input_text)
+    valid_input = False
+
+    while not valid_input:
+        if dificulty.lower() == "e":
+            valid_input = True
+            clear_terminal()
+            game_logo()
+            sleep(delay)
+            print("                                                         Game Mode: Easy\n")
+            
+        elif dificulty.lower() == "m":
+            valid_input = True
+            clear_terminal()
+            game_logo()
+            sleep(delay)
+            print("                                                         Game Mode: Medium\n")
+        
+        elif dificulty.lower() == "h":
+            valid_input = True
+            clear_terminal()
+            game_logo()
+            sleep(delay)
+            print("                                                         Game Mode: Hard\n")
+
+        else:
+            clear_terminal()
+            game_logo()
+            print("                 You have entered invalid option, please choose again. \n")
+            sleep(delay*8)
+            select_game()
 
 main_page()
