@@ -284,15 +284,13 @@ def select_game():
     sleep(delay)
     input_text = "                            [E] Easy Mode    (3x3) Grid \n                            [M] Medium Mode  (4x4) Grid \n                            [H] Hard Mode    (5x5) Grid\n"
     difficulty = input(input_text)
-        #NEEDS INVALID OPTION OR MOVE SECOND QUESITON OUT
     clear_terminal()
     game_logo()
     sleep(delay)
-    print("                  Would you like to take the first move?\n")
-    first_move = input("                            [Y] Yes, assign me an 'X' \n                            [N] No, Computer should start first \n ")
+    first_move()
     clear_terminal()
     game_logo()
-    
+
     valid_input = False
 
     while not valid_input:
@@ -318,6 +316,30 @@ def select_game():
             sleep(delay*8)
             select_game()
 
+def first_move():
+    """
+    Asks player to select game order
+    """
+    global first
+
+    clear_terminal()
+    game_logo()
+    sleep(delay)
+    print("                  Would you like to take the first move?\n")
+    first = input("                            [Y] Yes, assign me an 'X' \n                            [N] No, Computer should start first \n ")
+    valid_input = False
+
+    while not valid_input:
+        if first.lower() == "y" or first.lower() == "n":
+            valid_input = True
+
+        else:
+            clear_terminal()
+            game_logo()
+            print("                 You have entered invalid option, please choose again. \n")
+            sleep(delay*8)
+            first_move()
+            
 def draw_grid(type):
 
     valid_game_grid = False
@@ -336,7 +358,6 @@ def draw_grid(type):
             print("\n")
             break
             
-
         elif difficulty == "Medium":
             valid_input = True
             print(" "*17 + " " + medium_grid[1] + " | " + medium_grid[2] + " | " + medium_grid[3] + " | " + medium_grid[4] + "  " +
@@ -378,5 +399,6 @@ def draw_grid(type):
             print("                 You have entered invalid option, please choose again. \n")
             sleep(delay*8)
             select_game()
+
 
 main_page()
