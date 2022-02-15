@@ -420,25 +420,51 @@ def moves():
     """
     Loop to capture user and computer inputs.
     """
-    draw_grid(difficulty)
-    #Loop to capture user computer input.
     while True:
-        # capture player input
-        try:
-            choice = int(input(f'{player_name}, yor turn, type choosen reference letter for the grid position.\n'))
-            if choice in range(1, game_range):
-                if game_grid[choice] == " ":
-                    game_grid[choice] = "X"
-                    break
+        draw_grid(difficulty)
+        #Loop to capture user computer input.
+        while True:
+            # capture player input
+            try:
+                sleep(delay*2)
+                choice = int(input(f'         {player_name}, yor turn, type choosen reference letter for the grid position.\n\n'))
+                if choice in range(1, game_range):
+                    if game_grid[choice] == " ":
+                        game_grid[choice] = "X"
+                        break
+                    else:
+                        clear_terminal()
+                        game_logo()
+                        print(f'         Sorry, {choice} has been choosen already. \n')
+                        draw_grid(difficulty)
                 else:
-                    print(f'Sorry, {choice} has been choosen already.')
-            else:
-                print(f'\n Invalid number, please choose number between 1-{game_range}.\n')
-        except ValueError:
-            print("Invalid input, please choose a valid number.")
-    clear_terminal()
-    game_logo()
-    draw_grid(difficulty)
+                    clear_terminal()
+                    game_logo()
+                    print(f'         Invalid number, please choose number between 1-{game_range}.\n')
+                    draw_grid(difficulty)
+            except ValueError:
+                clear_terminal()
+                game_logo()
+                print("         Invalid input, please choose a valid number. \n")
+                draw_grid(difficulty)
+        clear_terminal()
+        game_logo()
+        choice = random_move(game_grid)
+        print(f'          Computer choose position: {choice} \n')
+       
+
+def random_move(game_grid):
+    """
+    Computer random move
+    """
+    while True:
+        pc_move = random.randint(1, game_range)
+        if game_grid[pc_move] == " ":
+            game_grid[pc_move] = "O"
+            return pc_move
+
+
+
 
 def game():
     main_page()
