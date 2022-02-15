@@ -287,27 +287,30 @@ def select_game():
     clear_terminal()
     game_logo()
     sleep(delay)
-    first_move()
-    clear_terminal()
-    game_logo()
-
+    
     valid_input = False
 
     while not valid_input:
         if difficulty.lower() == "e":
             valid_input = True
             difficulty = "Easy"
-            draw_grid(difficulty)
+            first_move()
+            sleep(delay)
+            moves()
             
         elif difficulty.lower() == "m":
             valid_input = True
             difficulty = "Medium"
-            draw_grid(difficulty)
+            first_move()
+            sleep(delay)
+            moves()
             
         elif difficulty.lower() == "h":
             valid_input = True
             difficulty = "Hard"
-            draw_grid(difficulty)
+            first_move()
+            sleep(delay)
+            moves()
 
         else:
             clear_terminal()
@@ -332,6 +335,8 @@ def first_move():
     while not valid_input:
         if first.lower() == "y" or first.lower() == "n":
             valid_input = True
+            clear_terminal()
+            game_logo()
 
         else:
             clear_terminal()
@@ -339,8 +344,11 @@ def first_move():
             print("                 You have entered invalid option, please choose again. \n")
             sleep(delay*8)
             first_move()
-            
+
 def draw_grid(type):
+
+    global game_grid
+    global game_range
 
     valid_game_grid = False
 
@@ -356,8 +364,11 @@ def draw_grid(type):
             print(" "*20 + " " + easy_grid[7] + " | " + easy_grid[8] + " | " + easy_grid[9] + "  " +
                 " "*18 + "G" + " | " + "H" + " | " + "I" + "  ")
             print("\n")
+            game_grid = easy_grid
+            game_range = 9
             break
             
+
         elif difficulty == "Medium":
             valid_input = True
             print(" "*17 + " " + medium_grid[1] + " | " + medium_grid[2] + " | " + medium_grid[3] + " | " + medium_grid[4] + "  " +
@@ -372,6 +383,8 @@ def draw_grid(type):
             print(" "*17 + " " + medium_grid[13] + " | " + medium_grid[14] + " | " + medium_grid[15] + " | " + medium_grid[16] + "  " +
                 " "*18 + "M" + " | " + "N" + " | " + "O" + " | " + "P" + "  ")
             print("\n")
+            game_grid = medium_grid
+            game_range = 16
             break
 
         elif difficulty == "Hard":
@@ -391,7 +404,10 @@ def draw_grid(type):
             print(" "*13 + " " + hard_grid[21] + " | " + hard_grid[22] + " | " + hard_grid[23] + " | " + hard_grid[24] + " | " + hard_grid[25] + "  " +
                 " "*18 + "U" + " | " + "V" + " | " + "W" + " | " + "X" + " | " + "Y" + "  ")
             print("\n")
+            game_grid = hard_grid
+            game_range = 25
             break
+
 
         else:
             clear_terminal()
@@ -400,5 +416,33 @@ def draw_grid(type):
             sleep(delay*8)
             select_game()
 
+def moves():
+    """
+    Loop to capture user and computer inputs.
+    """
+    draw_grid(difficulty)
+    #Loop to capture user computer input.
+    while True:
+        # capture player input
+        try:
+            choice = int(input(f'{player_name}, yor turn, type choosen reference letter for the grid position.\n'))
+            if choice in range(1, game_range):
+                if game_grid[choice] == " ":
+                    game_grid[choice] = "X"
+                    break
+                else:
+                    print(f'Sorry, {choice} has been choosen already.')
+            else:
+                print(f'\n Invalid number, please choose number between 1-{game_range}.\n')
+        except ValueError:
+            print("Invalid input, please choose a valid number.")
+    clear_terminal()
+    game_logo()
+    draw_grid(difficulty)
 
-main_page()
+def game():
+    main_page()
+
+
+
+game()
