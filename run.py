@@ -345,6 +345,88 @@ def first_move():
             sleep(delay*8)
             first_move()
 
+def moves():
+    """
+    Loop to capture user and computer inputs.
+    """
+    global player
+
+    if first == "n":
+        clear_terminal()
+        game_logo()
+        draw_grid(difficulty)
+        clear_terminal()
+        game_logo()
+        choice = random_move(game_grid)
+        print(f'          Computer choose position: {choice} \n')
+
+    while True:
+        draw_grid(difficulty)
+        #Loop to capture user computer input.
+        while True:
+            # capture player input
+            try:
+                sleep(delay*2)
+                choice = int(input(f'\n         {player_name}, yor turn, type chosen reference letter for the grid position.\n\n'))
+                if choice in range(1, game_range):
+                    if  game_grid[choice] == " ":
+                        game_grid[choice] = "X"
+                        player = "X"
+                        # Below checks if game won by player
+                        if check_win(easy_grid, player):
+                            clear_terminal()
+                            game_logo()
+                            print("You win! Congratulations \n ")
+                            draw_grid(difficulty)
+                            sleep(delay*10)
+                            #placeholder to continue streak or restart to menu
+                            clear_terminal()
+                            game()
+                        break
+                    else:
+                        clear_terminal()
+                        game_logo()
+                        print(f'         Sorry, {choice} has been chosen already. \n')
+                        draw_grid(difficulty)
+                else:
+                    clear_terminal()
+                    game_logo()
+                    print(f'         Invalid number, please choose number between {play_area}.\n')
+                    draw_grid(difficulty)
+            except ValueError:
+                clear_terminal()
+                game_logo()
+                print("         Invalid input, please choose a valid number. \n")
+                draw_grid(difficulty)
+
+        clear_terminal()
+        game_logo()
+        choice = random_move(game_grid)
+        print(f'          Computer choose position: {choice} \n')
+
+        if  check_win(easy_grid, player):
+            clear_terminal()
+            game_logo()
+            print("Computer Wins! Sorry \n")
+            draw_grid(difficulty)
+            sleep(delay*10)
+            clear_terminal()
+            game()
+        
+
+def random_move(game_grid):
+    """
+    Computer random move
+    """
+    global player
+
+    while True:
+        pc_move = random.randint(1, game_range)
+        if game_grid[pc_move] == " ":
+            game_grid[pc_move] = "O"
+            player = "O"
+            return pc_move
+
 def draw_grid(type):
 
     global game_grid
@@ -365,7 +447,7 @@ def draw_grid(type):
             print(" "*20 + " " + easy_grid[7] + " | " + easy_grid[8] + " | " + easy_grid[9] + "  " +
                 " "*18 + "G" + " | " + "H" + " | " + "I" + "  ")
             game_grid = easy_grid
-            game_range = 10
+            game_range = 9 # should be 10
             play_area = "1-9"
             break
             
@@ -384,7 +466,7 @@ def draw_grid(type):
             print(" "*17 + " " + medium_grid[13] + " | " + medium_grid[14] + " | " + medium_grid[15] + " | " + medium_grid[16] + "  " +
                 " "*18 + "M" + " | " + "N" + " | " + "O" + " | " + "P" + "  ")
             game_grid = medium_grid
-            game_range = 15
+            game_range = 15 # should be 16
             play_area = "1-15"
             break
 
@@ -405,7 +487,7 @@ def draw_grid(type):
             print(" "*13 + " " + hard_grid[21] + " | " + hard_grid[22] + " | " + hard_grid[23] + " | " + hard_grid[24] + " | " + hard_grid[25] + "  " +
                 " "*18 + "U" + " | " + "V" + " | " + "W" + " | " + "X" + " | " + "Y" + "  ")
             game_grid = hard_grid
-            game_range = 25
+            game_range = 25 # should be 26
             play_area = "1-25"
             break
 
@@ -416,64 +498,23 @@ def draw_grid(type):
             sleep(delay*8)
             select_game()
 
-def moves():
+def check_win(game_grid, player):
+    # print("check win")
+    # print(f' check function {player}')
     """
-    Loop to capture user and computer inputs.
+    Check if won
     """
-
-    if first == "n":
-        clear_terminal()
-        game_logo()
-        draw_grid(difficulty)
-        clear_terminal()
-        game_logo()
-        choice = random_move(game_grid)
-        print(f'          Computer choose position: {choice} \n')
-
-    while True:
-       
-        draw_grid(difficulty)
-        #Loop to capture user computer input.
-        while True:
-            # capture player input
-            try:
-                sleep(delay*2)
-                choice = int(input(f'\n         {player_name}, yor turn, type choosen reference letter for the grid position.\n\n'))
-                if choice in range(1, game_range):
-                    if game_grid[choice] == " ":
-                        game_grid[choice] = "X"
-                        break
-                    else:
-                        clear_terminal()
-                        game_logo()
-                        print(f'         Sorry, {choice} has been choosen already. \n')
-                        draw_grid(difficulty)
-                else:
-                    clear_terminal()
-                    game_logo()
-                    print(f'         Invalid number, please choose number between {play_area}.\n')
-                    draw_grid(difficulty)
-            except ValueError:
-                clear_terminal()
-                game_logo()
-                print("         Invalid input, please choose a valid number. \n")
-                draw_grid(difficulty)
-        clear_terminal()
-        game_logo()
-        choice = random_move(game_grid)
-        print(f'          Computer choose position: {choice} \n')
-       
-def random_move(game_grid):
-    """
-    Computer random move
-    """
-    while True:
-        pc_move = random.randint(1, game_range)
-        if game_grid[pc_move] == " ":
-            game_grid[pc_move] = "O"
-            return pc_move
-
-
+    if  (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player) or \
+        (game_grid[4] == player and game_grid[5] == player and game_grid[6] == player) or \
+        (game_grid[7] == player and game_grid[8] == player and game_grid[9] == player) or \
+        (game_grid[1] == player and game_grid[4] == player and game_grid[7] == player) or \
+        (game_grid[2] == player and game_grid[5] == player and game_grid[8] == player) or \
+        (game_grid[3] == player and game_grid[6] == player and game_grid[9] == player) or \
+        (game_grid[1] == player and game_grid[5] == player and game_grid[9] == player) or \
+        (game_grid[3] == player and game_grid[5] == player and game_grid[7] == player):
+        return True
+    else:
+        return False
 
 def game():
     main_page()
