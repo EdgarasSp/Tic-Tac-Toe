@@ -413,6 +413,15 @@ def moves():
             clear_terminal()
             game()
         
+        if check_draw():
+            clear_terminal()
+            game_logo()
+            print("It's a draw \n")
+            draw_grid(difficulty)
+            sleep(delay*10)
+            clear_terminal()
+            game()
+        
 
 def random_move(game_grid):
     """
@@ -515,6 +524,16 @@ def check_win(game_grid, player):
         return True
     else:
         return False
+
+def check_draw():
+    """
+    Checks if grid is no longer empty
+    """
+    if game_grid.count(" ") > 1:
+        return False
+    else:
+        return True
+
 
 def game():
     main_page()
