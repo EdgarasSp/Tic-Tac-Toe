@@ -266,7 +266,7 @@ def player_name():
     clear_terminal()
     game_logo()
     sleep(delay)
-    print(F"                              Welcome to the game {player_name}! \n")
+    print(F"\n\n\n\n                              Welcome to the game {player_name}! \n")
     sleep(delay*5)    
     select_game()
 
@@ -373,10 +373,10 @@ def moves():
                         game_grid[choice] = "X"
                         player = "X"
                         # Below checks if game won by player
-                        if check_win(easy_grid, player):
+                        if check_win(game_grid, player):
                             clear_terminal()
                             game_logo()
-                            print("You win! Congratulations \n ")
+                            print("         You win! Congratulations \n ")
                             draw_grid(difficulty)
                             sleep(delay*10)
                             #placeholder to continue streak or restart to menu
@@ -404,10 +404,10 @@ def moves():
         choice = random_move(game_grid)
         print(f'          Computer choose position: {choice} \n')
 
-        if  check_win(easy_grid, player):
+        if  check_win(game_grid, player):
             clear_terminal()
             game_logo()
-            print("Computer Wins! Sorry \n")
+            print("         Computer Wins! Sorry \n")
             draw_grid(difficulty)
             sleep(delay*10)
             clear_terminal()
@@ -416,7 +416,7 @@ def moves():
         if check_draw():
             clear_terminal()
             game_logo()
-            print("It's a draw \n")
+            print("                  It's a draw \n")
             draw_grid(difficulty)
             sleep(delay*10)
             clear_terminal()
@@ -508,22 +508,51 @@ def draw_grid(type):
             select_game()
 
 def check_win(game_grid, player):
-    # print("check win")
-    # print(f' check function {player}')
     """
     Check if won
     """
-    if  (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player) or \
-        (game_grid[4] == player and game_grid[5] == player and game_grid[6] == player) or \
-        (game_grid[7] == player and game_grid[8] == player and game_grid[9] == player) or \
-        (game_grid[1] == player and game_grid[4] == player and game_grid[7] == player) or \
-        (game_grid[2] == player and game_grid[5] == player and game_grid[8] == player) or \
-        (game_grid[3] == player and game_grid[6] == player and game_grid[9] == player) or \
-        (game_grid[1] == player and game_grid[5] == player and game_grid[9] == player) or \
-        (game_grid[3] == player and game_grid[5] == player and game_grid[7] == player):
-        return True
-    else:
-        return False
+    if game_grid == easy_grid:
+        if  (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player) or \
+            (game_grid[4] == player and game_grid[5] == player and game_grid[6] == player) or \
+            (game_grid[7] == player and game_grid[8] == player and game_grid[9] == player) or \
+            (game_grid[1] == player and game_grid[4] == player and game_grid[7] == player) or \
+            (game_grid[2] == player and game_grid[5] == player and game_grid[8] == player) or \
+            (game_grid[3] == player and game_grid[6] == player and game_grid[9] == player) or \
+            (game_grid[1] == player and game_grid[5] == player and game_grid[9] == player) or \
+            (game_grid[3] == player and game_grid[5] == player and game_grid[7] == player):
+            return True
+        else:
+            return False
+    elif game_grid == medium_grid:
+        if  (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player and game_grid[4] == player) or \
+            (game_grid[5] == player and game_grid[6] == player and game_grid[7] == player and game_grid[8] == player) or \
+            (game_grid[9] == player and game_grid[10] == player and game_grid[11] == player and game_grid[12] == player) or \
+            (game_grid[13] == player and game_grid[14] == player and game_grid[15] == player and game_grid[16] == player) or \
+            (game_grid[1] == player and game_grid[5] == player and game_grid[9] == player and game_grid[13] == player) or \
+            (game_grid[2] == player and game_grid[6] == player and game_grid[10] == player and game_grid[14] == player) or \
+            (game_grid[3] == player and game_grid[7] == player and game_grid[11] == player and game_grid[15] == player) or \
+            (game_grid[4] == player and game_grid[8] == player and game_grid[12] == player and game_grid[16] == player) or \
+            (game_grid[1] == player and game_grid[6] == player and game_grid[11] == player and game_grid[16] == player) or \
+            (game_grid[4] == player and game_grid[7] == player and game_grid[10] == player and game_grid[13] == player):
+            return True
+        else:
+            return False
+    elif game_grid == hard_grid:
+        if  (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player and game_grid[4] == player and game_grid[5] == player) or \
+            (game_grid[6] == player and game_grid[7] == player and game_grid[8] == player and game_grid[9] == player and game_grid[10] == player) or \
+            (game_grid[11] == player and game_grid[12] == player and game_grid[13] == player and game_grid[14] == player and game_grid[15] == player) or \
+            (game_grid[16] == player and game_grid[17] == player and game_grid[18] == player and game_grid[19] == player and game_grid[20] == player) or \
+            (game_grid[21] == player and game_grid[22] == player and game_grid[23] == player and game_grid[24] == player and game_grid[25] == player) or \
+            (game_grid[1] == player and game_grid[6] == player and game_grid[11] == player and game_grid[16] == player and game_grid[21] == player) or \
+            (game_grid[2] == player and game_grid[7] == player and game_grid[12] == player and game_grid[17] == player and game_grid[22] == player) or \
+            (game_grid[3] == player and game_grid[8] == player and game_grid[13] == player and game_grid[18] == player and game_grid[23] == player) or \
+            (game_grid[4] == player and game_grid[9] == player and game_grid[14] == player and game_grid[19] == player and game_grid[24] == player) or \
+            (game_grid[5] == player and game_grid[10] == player and game_grid[15] == player and game_grid[20] == player and game_grid[25] == player) or \
+            (game_grid[1] == player and game_grid[7] == player and game_grid[13] == player and game_grid[19] == player and game_grid[25] == player) or \
+            (game_grid[5] == player and game_grid[9] == player and game_grid[13] == player and game_grid[17] == player and game_grid[21] == player):
+            return True
+        else:
+            return False
 
 def check_draw():
     """
