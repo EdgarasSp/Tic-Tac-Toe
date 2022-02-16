@@ -90,9 +90,7 @@ def game_logo():
                 |_   _(_) ___   |_   _|_ _  ___   |_   _|__   ___ 
                   | | | |/ __|    | |/ _` |/ __|    | |/ _ \ / _ \ 
                   | | | | (__     | | (_| | (__     | | (_) |  __/
-                  |_| |_|\___|    |_|\__,_|\___|    |_|\___/ \___|
-                                                                                                     
-  """)
+                  |_| |_|\___|    |_|\__,_|\___|    |_|\___/ \___| \n""")
 
 def main_page():
     """
@@ -358,7 +356,6 @@ def moves():
         clear_terminal()
         game_logo()
         choice = random_move(game_grid)
-        print(f'          Computer choose position: {choice} \n')
 
     while True:
         draw_grid(difficulty)
@@ -367,8 +364,12 @@ def moves():
             # capture player input
             try:
                 sleep(delay*2)
-                choice = int(input(f'\n         {player_name}, yor turn, type chosen reference letter for the grid position.\n\n'))
-                if choice in range(1, game_range):
+                print(f'        Now {player_name}, it is yor turn, type a grid position.\n')
+                #print(f'        Computer choose: {choice}. Now {player_name}, it is yor turn, type a grid position.\n')
+                choice = int(input())
+                if choice == 0:
+                    in_game_options()
+                elif choice in range(1, game_range): #was if
                     if  game_grid[choice] == " ":
                         game_grid[choice] = "X"
                         player = "X"
@@ -376,39 +377,39 @@ def moves():
                         if check_win(game_grid, player):
                             clear_terminal()
                             game_logo()
-                            print("         You win! Congratulations \n ")
                             draw_grid(difficulty)
+                            print("         You win! Congratulations \n ")
                             sleep(delay*10)
-                            #placeholder to continue streak or restart to menu
                             clear_terminal()
                             game()
                         break
                     else:
                         clear_terminal()
                         game_logo()
-                        print(f'         Sorry, {choice} has been chosen already. \n')
                         draw_grid(difficulty)
+                        print(f'        Sorry, {choice} has been chosen already. \n')
+
                 else:
                     clear_terminal()
                     game_logo()
-                    print(f'         Invalid number, please choose number between {play_area}.\n')
                     draw_grid(difficulty)
+                    print(f'        Invalid number, please choose number between {play_area}.\n')
             except ValueError:
                 clear_terminal()
                 game_logo()
-                print("         Invalid input, please choose a valid number. \n")
                 draw_grid(difficulty)
+                print("        Invalid input, please choose a valid number. \n")
+                
 
         clear_terminal()
-        game_logo()
+        game_logo()      
         choice = random_move(game_grid)
-        print(f'          Computer choose position: {choice} \n')
 
         if  check_win(game_grid, player):
             clear_terminal()
             game_logo()
-            print("         Computer Wins! Sorry \n")
             draw_grid(difficulty)
+            print("         Computer Wins! Sorry \n")
             sleep(delay*10)
             clear_terminal()
             game()
@@ -416,12 +417,11 @@ def moves():
         if check_draw():
             clear_terminal()
             game_logo()
-            print("                  It's a draw \n")
             draw_grid(difficulty)
+            print("                  It's a draw \n")
             sleep(delay*10)
             clear_terminal()
-            game()
-        
+            game()       
 
 def random_move(game_grid):
     """
@@ -447,6 +447,7 @@ def draw_grid(type):
     while not valid_game_grid:
         if difficulty == "Easy":
             valid_input = True
+            print(f'        Win Streak: 0             [0] Menu          Difficulty: {difficulty}\n')
             print(" "*20 + " " + easy_grid[1] + " | " + easy_grid[2] + " | " + easy_grid[3] + "  " +
                 " "*18 + "A" + " | " + "B" + " | " + "C" + "  ")
             print(" "*20 + "---|---|---" + " "*18 + "---|---|---")
@@ -454,7 +455,7 @@ def draw_grid(type):
                 " "*18 + "D" + " | " + "E" + " | " + "F" + "  ")
             print(" "*20 + "---|---|---" + " "*18 + "---|---|---")
             print(" "*20 + " " + easy_grid[7] + " | " + easy_grid[8] + " | " + easy_grid[9] + "  " +
-                " "*18 + "G" + " | " + "H" + " | " + "I" + "  ")
+                " "*18 + "G" + " | " + "H" + " | " + "I" + "  \n")
             game_grid = easy_grid
             game_range = 9 # should be 10
             play_area = "1-9"
@@ -463,6 +464,7 @@ def draw_grid(type):
 
         elif difficulty == "Medium":
             valid_input = True
+            print(f'        Win Streak: 0             [0] Menu          Difficulty: {difficulty}\n')
             print(" "*17 + " " + medium_grid[1] + " | " + medium_grid[2] + " | " + medium_grid[3] + " | " + medium_grid[4] + "  " +
                 " "*18 + "A" + " | " + "B" + " | " + "C" + " | " + "D" + "  ")
             print(" "*17 + "---|---|---|---" + " "*18 + "---|---|---|---")
@@ -473,7 +475,7 @@ def draw_grid(type):
                 " "*18 + "I" + " | " + "J" + " | " + "k" + " | " + "L" + "  ")
             print(" "*17 + "---|---|---|---" + " "*18 + "---|---|---|---")
             print(" "*17 + " " + medium_grid[13] + " | " + medium_grid[14] + " | " + medium_grid[15] + " | " + medium_grid[16] + "  " +
-                " "*18 + "M" + " | " + "N" + " | " + "O" + " | " + "P" + "  ")
+                " "*18 + "M" + " | " + "N" + " | " + "O" + " | " + "P" + "  \n ")
             game_grid = medium_grid
             game_range = 15 # should be 16
             play_area = "1-15"
@@ -481,6 +483,7 @@ def draw_grid(type):
 
         elif difficulty == "Hard":
             valid_input = True
+            print(f'        Win Streak: 0             [0] Menu          Difficulty: {difficulty}\n')
             print(" "*13 + " " + hard_grid[1] + " | " + hard_grid[2] + " | " + hard_grid[3] + " | " + hard_grid[4] + " | " + hard_grid[5] + "  " +
                 " "*18 + "A" + " | " + "B" + " | " + "C" + " | " + "D" + " | " + "E" + "  ")
             print(" "*13 + "---|---|---|---|---" + " "*18 + "---|---|---|---|---")
@@ -494,7 +497,7 @@ def draw_grid(type):
                 " "*18 + "P" + " | " + "Q" + " | " + "R" + " | " + "S" + " | " + "T" + "  ")
             print(" "*13 + "---|---|---|---|---" + " "*18 + "---|---|---|---|---")
             print(" "*13 + " " + hard_grid[21] + " | " + hard_grid[22] + " | " + hard_grid[23] + " | " + hard_grid[24] + " | " + hard_grid[25] + "  " +
-                " "*18 + "U" + " | " + "V" + " | " + "W" + " | " + "X" + " | " + "Y" + "  ")
+                " "*18 + "U" + " | " + "V" + " | " + "W" + " | " + "X" + " | " + "Y" + "  \n")
             game_grid = hard_grid
             game_range = 25 # should be 26
             play_area = "1-25"
@@ -562,6 +565,41 @@ def check_draw():
         return False
     else:
         return True
+
+#def current_streak(): #TBC
+
+
+def in_game_options():
+    """
+    Asks what whould like to do in game menu
+    """
+    clear_terminal()
+    game_logo()
+    sleep(delay)
+    print("\n\n                  In game menu: \n")
+    in_menu = input("                            [C] Continue Game \n                            [R] Restart Current Game \n                            [M] Main Menu \n\n")
+    valid_input = False
+
+    while not valid_input:
+        if in_menu.lower() == "c":
+            clear_terminal()
+            game_logo()
+            draw_grid(difficulty)
+            return
+        elif in_menu.lower() == "r":
+            print("restart")
+            #reset_grid
+            #reset_streak
+            #draw_grid
+        elif in_menu.lower() == "m":
+            print("MainMenu")
+            #reset_grid
+            #reset_streak
+            #restart Game
+        else:
+            print("        Invalid input, please choose a valid number. \n")
+            in_game_options()
+    
 
 
 def game():
