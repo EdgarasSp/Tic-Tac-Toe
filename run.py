@@ -110,7 +110,7 @@ def main_page():
     while not valid_input:
         if first.lower() == "s":
             valid_input = True
-            player_name()
+            players_name()
 
         elif first.lower() == "l":
             valid_input = True
@@ -239,7 +239,7 @@ def instrunctions_page():
     clear_terminal()
     main_page()
 
-def player_name():
+def players_name():
     """
     Request player's name, name used in game and leaderboards for tracking
     """
@@ -568,7 +568,6 @@ def check_draw():
 
 #def current_streak(): #TBC
 
-
 def in_game_options():
     """
     Asks what whould like to do in game menu
@@ -577,7 +576,7 @@ def in_game_options():
     game_logo()
     sleep(delay)
     print("\n\n\n                          In game menu: \n")
-    in_menu = input("                            [C] Continue Game \n                            [R] Restart Current Game \n                            [M] Main Menu \n\n")
+    in_menu = input("                            [C] Continue Game \n                            [R] Restart Current Game \n                            [D] Change Difficulty \n                            [M] Main Menu \n\n")
     valid_input = False
 
     while not valid_input:
@@ -590,20 +589,23 @@ def in_game_options():
             clear_terminal()
             game_logo()
             print("\n\n\n\n                            Restarting game... \n")
-            sleep(delay*3)
-            clear_terminal()
-            game_logo()
+            sleep(delay*2)
             reset_grid()
             #reset_streak
             moves()
 
+        elif in_menu.lower() == "d":
+            clear_terminal()
+            game_logo()
+            reset_grid()
+            select_game()
+
         elif in_menu.lower() == "m":
-            print("MainMenu")
-            #reset_grid
+            reset_grid()
+            return_home()
             #reset_streak
-            #restart Game
         else:
-            print("        Invalid input, please choose a valid number. \n")
+            print("        Invalid input, please choose a valid option. \n")
             in_game_options()
     
 
@@ -611,6 +613,10 @@ def reset_grid():
     """
     Resets the grid
     """
+
+    clear_terminal()
+    game_logo()
+
     if game_grid == easy_grid:
         game_grid.clear()
         game_grid.extend([" ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
@@ -622,6 +628,15 @@ def reset_grid():
         game_grid.extend([" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
     else:
         return
+
+#def end_game_options(): #TBC prints optins
+
+def return_home():
+    clear_terminal()
+    game_logo()
+    main_page()
+    return
+    #reset streak
     
 
 
