@@ -30,6 +30,8 @@ easy_grid = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
 medium_grid = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
 hard_grid = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
 
+streak = 0
+
 def clear_terminal():
     """
     Clear terminal to give new page loaded feal
@@ -377,12 +379,10 @@ def moves():
                         if check_win(game_grid, player):
                             clear_terminal()
                             game_logo()
+                            current_streak()
                             draw_grid(difficulty)
                             print("         You won! Congratulations \n ")
                             end_game_options("won")
-                            #sleep(delay*10)
-                            #clear_terminal()
-                            #game()
                         break
                     else:
                         clear_terminal()
@@ -412,9 +412,6 @@ def moves():
             draw_grid(difficulty)
             print("         Computer Wins! Sorry, better luck next time. \n")
             end_game_options("loss")
-            #sleep(delay*10)
-            #clear_terminal()
-            #game()
         
         if check_draw():
             clear_terminal()
@@ -422,9 +419,6 @@ def moves():
             draw_grid(difficulty)
             print("                  It's a draw, your game streak is safe. \n")
             end_game_options("draw")
-            # sleep(delay*10)
-            # clear_terminal()
-            # game()       
 
 def random_move(game_grid):
     """
@@ -450,7 +444,7 @@ def draw_grid(type):
     while not valid_game_grid:
         if difficulty == "Easy":
             valid_input = True
-            print(f'        Win Streak: 0             [0] Menu          Difficulty: {difficulty}\n')
+            print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
             print(" "*20 + " " + easy_grid[1] + " | " + easy_grid[2] + " | " + easy_grid[3] + "  " +
                 " "*18 + "A" + " | " + "B" + " | " + "C" + "  ")
             print(" "*20 + "---|---|---" + " "*18 + "---|---|---")
@@ -467,7 +461,7 @@ def draw_grid(type):
 
         elif difficulty == "Medium":
             valid_input = True
-            print(f'        Win Streak: 0             [0] Menu          Difficulty: {difficulty}\n')
+            print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
             print(" "*17 + " " + medium_grid[1] + " | " + medium_grid[2] + " | " + medium_grid[3] + " | " + medium_grid[4] + "  " +
                 " "*18 + "A" + " | " + "B" + " | " + "C" + " | " + "D" + "  ")
             print(" "*17 + "---|---|---|---" + " "*18 + "---|---|---|---")
@@ -486,7 +480,7 @@ def draw_grid(type):
 
         elif difficulty == "Hard":
             valid_input = True
-            print(f'        Win Streak: 0             [0] Menu          Difficulty: {difficulty}\n')
+            print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
             print(" "*13 + " " + hard_grid[1] + " | " + hard_grid[2] + " | " + hard_grid[3] + " | " + hard_grid[4] + " | " + hard_grid[5] + "  " +
                 " "*18 + "A" + " | " + "B" + " | " + "C" + " | " + "D" + " | " + "E" + "  ")
             print(" "*13 + "---|---|---|---|---" + " "*18 + "---|---|---|---|---")
@@ -569,7 +563,12 @@ def check_draw():
     else:
         return True
 
-#def current_streak(): #TBC
+def current_streak():
+    """
+    Counts game streak
+    """
+    global streak
+    streak += 1
 
 def in_game_options():
     """
