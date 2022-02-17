@@ -248,14 +248,14 @@ def player_name():
     clear_terminal()
     game_logo()
     sleep(delay)
-    print("                  What is your name or aliace? (2-6 characters)\n")
+    print("\n\n\n                  What is your name or aliace? (2-6 characters)\n")
     sleep(delay)
     player_name = input("                                      Name: ")
     while not len(player_name) >1 or not len(player_name) <6:
         clear_terminal()
         game_logo()
         sleep(delay)
-        print("                                      UPS...\n ")
+        print("\n\n\n                                      UPS...\n ")
         print("                   You have entered invalid number of characters \n")
         print("            Please enter your name or aliace again, between 2-6 characters.\n")
         sleep(delay)
@@ -278,7 +278,7 @@ def select_game():
     clear_terminal()
     game_logo()
     sleep(delay)
-    print(F"                         {player_name}, choose games difficulty level:\n")
+    print(F"\n\n\n                         {player_name}, choose games difficulty level:\n")
     sleep(delay)
     input_text = "                            [E] Easy Mode    (3x3) Grid \n                            [M] Medium Mode  (4x4) Grid \n                            [H] Hard Mode    (5x5) Grid\n"
     difficulty = input(input_text)
@@ -326,7 +326,7 @@ def first_move():
     clear_terminal()
     game_logo()
     sleep(delay)
-    print("                  Would you like to take the first move?\n")
+    print("\n\n\n                      Would you like to take the first move?\n")
     first = input("                            [Y] Yes, assign me an 'X' \n                            [N] No, Computer should start first \n ")
     valid_input = False
 
@@ -339,7 +339,7 @@ def first_move():
         else:
             clear_terminal()
             game_logo()
-            print("                 You have entered invalid option, please choose again. \n")
+            print("\n\n\n                 You have entered invalid option, please choose again. \n")
             sleep(delay*8)
             first_move()
 
@@ -506,7 +506,7 @@ def draw_grid(type):
         else:
             clear_terminal()
             game_logo()
-            print("                 You have entered invalid option, please choose again. \n")
+            print("\n\n\n                 You have entered invalid option, please choose again. \n")
             sleep(delay*8)
             select_game()
 
@@ -576,7 +576,7 @@ def in_game_options():
     clear_terminal()
     game_logo()
     sleep(delay)
-    print("\n\n                  In game menu: \n")
+    print("\n\n\n                          In game menu: \n")
     in_menu = input("                            [C] Continue Game \n                            [R] Restart Current Game \n                            [M] Main Menu \n\n")
     valid_input = False
 
@@ -587,10 +587,16 @@ def in_game_options():
             draw_grid(difficulty)
             return
         elif in_menu.lower() == "r":
-            print("restart")
-            #reset_grid
+            clear_terminal()
+            game_logo()
+            print("\n\n\n\n                            Restarting game... \n")
+            sleep(delay*3)
+            clear_terminal()
+            game_logo()
+            reset_grid()
             #reset_streak
-            #draw_grid
+            moves()
+
         elif in_menu.lower() == "m":
             print("MainMenu")
             #reset_grid
@@ -599,6 +605,23 @@ def in_game_options():
         else:
             print("        Invalid input, please choose a valid number. \n")
             in_game_options()
+    
+
+def reset_grid():
+    """
+    Resets the grid
+    """
+    if game_grid == easy_grid:
+        game_grid.clear()
+        game_grid.extend([" ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
+    elif game_grid == medium_grid:
+        game_grid.clear()
+        game_grid.extend([" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
+    elif game_grid == hard_grid:
+        game_grid.clear()
+        game_grid.extend([" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
+    else:
+        return
     
 
 
