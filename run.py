@@ -202,7 +202,7 @@ def instrunctions_page():
     print("    You don't need to remember these references, they will be shown during game.")
     sleep(delay_short)
     print("    EASY - Grid 3 x 3 \n")
-    print("         A | B | C","        ---|---|---","         D | E | F","        ---|---|---","         G | H | I\n", sep='\n' )
+    print("         1 | 2 | 3","        ---|---|---","         4 | 5 | 6","        ---|---|---","         7 | 8 | 9\n", sep='\n' )
     sleep(delay*3)
 
     input("                           [Return] Enter to continue...\n")
@@ -217,7 +217,7 @@ def instrunctions_page():
     print("    You don't need to remember these references, they will be shown during game.")
     sleep(delay_short)
     print("    MEDIUM - Grid 4 x 4 \n")
-    print("         A | B | C | D","        ---|---|---|---","         E | F | G | H","        ---|---|---|---","         I | J | K | L","        ---|---|---|---","         M | N | O | P\n", sep='\n' )
+    print("         1  | 2  | 3  | 4 ","        ----|----|----|----","         5  | 6  | 7  | 8 ","        ----|----|----|----","         9  | 10 | 11 | 12","        ----|----|----|----","         13 | 14 | 15 | 16\n", sep='\n' )
     
     sleep(delay*3)
 
@@ -232,7 +232,7 @@ def instrunctions_page():
     print("    You don't need to remember these references, they will be shown during game.")  
     sleep(delay_short)
     print("    HARD - Grid 5 x 5 \n")
-    print("         A | B | C | D | E","        ---|---|---|---|---","         F | G | H | I | J","        ---|---|---|---|---","         K | L | M | N | O","        ---|---|---|---|---","         P | Q | R | S | T","        ---|---|---|---|---","         U | V | W | X | Y\n", sep='\n' )  
+    print("         1  | 2  | 3  | 4  | 5 ","        ----|----|----|----|----","         6  | 7  | 8  | 9  | 10","        ----|----|----|----|----","         11 | 12 | 13 | 14 | 15","        ----|----|----|----|----","         16 | 17 | 18 | 19 | 20","        ----|----|----|----|----","         21 | 22 | 23 | 24 | 25\n", sep='\n' )  
 
     sleep(delay*3)
 
@@ -432,7 +432,7 @@ def random_move(game_grid):
             game_grid[pc_move] = "O"
             player = "O"
             return pc_move
-
+ 
 def draw_grid(type):
 
     global game_grid
@@ -446,13 +446,13 @@ def draw_grid(type):
             valid_input = True
             print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
             print(" "*20 + " " + easy_grid[1] + " | " + easy_grid[2] + " | " + easy_grid[3] + "  " +
-                " "*18 + "A" + " | " + "B" + " | " + "C" + "  ")
+                " "*18 + "1" + " | " + "2" + " | " + "3" + "  ")
             print(" "*20 + "---|---|---" + " "*18 + "---|---|---")
             print(" "*20 + " " + easy_grid[4] + " | " + easy_grid[5] + " | " + easy_grid[6] + "  " +
-                " "*18 + "D" + " | " + "E" + " | " + "F" + "  ")
+                " "*18 + "4" + " | " + "5" + " | " + "6" + "  ")
             print(" "*20 + "---|---|---" + " "*18 + "---|---|---")
             print(" "*20 + " " + easy_grid[7] + " | " + easy_grid[8] + " | " + easy_grid[9] + "  " +
-                " "*18 + "G" + " | " + "H" + " | " + "I" + "  \n")
+                " "*18 + "7" + " | " + "8" + " | " + "9" + "  \n")
             game_grid = easy_grid
             game_range = 9 # should be 10
             play_area = "1-9"
@@ -463,16 +463,16 @@ def draw_grid(type):
             valid_input = True
             print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
             print(" "*17 + " " + medium_grid[1] + " | " + medium_grid[2] + " | " + medium_grid[3] + " | " + medium_grid[4] + "  " +
-                " "*18 + "A" + " | " + "B" + " | " + "C" + " | " + "D" + "  ")
-            print(" "*17 + "---|---|---|---" + " "*18 + "---|---|---|---")
+                " "*18 + "1 " + " | " + "2 " + " | " + "3 " + " | " + "4 " + "  ")
+            print(" "*17 + "---|---|---|---" + " "*18 + "----|----|----|----")
             print(" "*17 + " " + medium_grid[5] + " | " + medium_grid[6] + " | " + medium_grid[7] + " | " + medium_grid[8] + "  " +
-                " "*18 + "E" + " | " + "F" + " | " + "G" + " | " + "H" + "  ")
-            print(" "*17 + "---|---|---|---" + " "*18 + "---|---|---|---")
+                " "*18 + "5 " + " | " + "6 " + " | " + "7 " + " | " + "8 " + "  ")
+            print(" "*17 + "---|---|---|---" + " "*18 + "----|----|----|----")
             print(" "*17 + " " + medium_grid[9] + " | " + medium_grid[10] + " | " + medium_grid[11] + " | " + medium_grid[12] + "  " +
-                " "*18 + "I" + " | " + "J" + " | " + "k" + " | " + "L" + "  ")
-            print(" "*17 + "---|---|---|---" + " "*18 + "---|---|---|---")
+                " "*18 + "9 " + " | " + "10" + " | " + "11" + " | " + "12" + "  ")
+            print(" "*17 + "---|---|---|---" + " "*18 + "----|----|----|----")
             print(" "*17 + " " + medium_grid[13] + " | " + medium_grid[14] + " | " + medium_grid[15] + " | " + medium_grid[16] + "  " +
-                " "*18 + "M" + " | " + "N" + " | " + "O" + " | " + "P" + "  \n ")
+                " "*18 + "13" + " | " + "14" + " | " + "15" + " | " + "16" + "  \n ")
             game_grid = medium_grid
             game_range = 16 # should be 16
             play_area = "1-15"
@@ -482,19 +482,19 @@ def draw_grid(type):
             valid_input = True
             print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
             print(" "*13 + " " + hard_grid[1] + " | " + hard_grid[2] + " | " + hard_grid[3] + " | " + hard_grid[4] + " | " + hard_grid[5] + "  " +
-                " "*18 + "A" + " | " + "B" + " | " + "C" + " | " + "D" + " | " + "E" + "  ")
-            print(" "*13 + "---|---|---|---|---" + " "*18 + "---|---|---|---|---")
+                " "*18 + "1 " + " | " + "2 " + " | " + "3 " + " | " + "4 " + " | " + "5 " + "  ")
+            print(" "*13 + "---|---|---|---|---" + " "*18 + "----|----|----|----|----")
             print(" "*13 + " " + hard_grid[6] + " | " + hard_grid[7] + " | " + hard_grid[8] + " | " + hard_grid[9] + " | " + hard_grid[10] + "  " +
-                " "*18 + "F" + " | " + "G" + " | " + "H" + " | " + "I" + " | " + "J" + "  ")
-            print(" "*13 + "---|---|---|---|---" + " "*18 + "---|---|---|---|---")
+                " "*18 + "6 " + " | " + "7 " + " | " + "8 " + " | " + "9 " + " | " + "10" + "  ")
+            print(" "*13 + "---|---|---|---|---" + " "*18 + "----|----|----|----|----")
             print(" "*13 + " " + hard_grid[11] + " | " + hard_grid[12] + " | " + hard_grid[13] + " | " + hard_grid[14] + " | " + hard_grid[15] + "  " +
-                " "*18 + "K" + " | " + "L" + " | " + "M" + " | " + "N" + " | " + "O" + "  ")
-            print(" "*13 + "---|---|---|---|---" + " "*18 + "---|---|---|---|---")
+                " "*18 + "11" + " | " + "12" + " | " + "13" + " | " + "14" + " | " + "15" + "  ")
+            print(" "*13 + "---|---|---|---|---" + " "*18 + "----|----|----|----|----")
             print(" "*13 + " " + hard_grid[16] + " | " + hard_grid[17] + " | " + hard_grid[18] + " | " + hard_grid[19] + " | " + hard_grid[20] + "  " +
-                " "*18 + "P" + " | " + "Q" + " | " + "R" + " | " + "S" + " | " + "T" + "  ")
-            print(" "*13 + "---|---|---|---|---" + " "*18 + "---|---|---|---|---")
+                " "*18 + "16" + " | " + "17" + " | " + "18" + " | " + "19" + " | " + "20" + "  ")
+            print(" "*13 + "---|---|---|---|---" + " "*18 + "----|----|----|----|----")
             print(" "*13 + " " + hard_grid[21] + " | " + hard_grid[22] + " | " + hard_grid[23] + " | " + hard_grid[24] + " | " + hard_grid[25] + "  " +
-                " "*18 + "U" + " | " + "V" + " | " + "W" + " | " + "X" + " | " + "Y" + "  \n")
+                " "*18 + "21" + " | " + "22" + " | " + "23" + " | " + "24" + " | " + "25" + "  \n")
             game_grid = hard_grid
             game_range = 25 # should be 26
             play_area = "1-25"
