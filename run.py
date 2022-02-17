@@ -593,7 +593,7 @@ def in_game_options():
             print("\n\n\n\n                            Restarting game... \n")
             sleep(delay*5)
             reset_grid()
-            #reset_streak
+            reset_streak()
             moves()
 
         elif in_menu.lower() == "d":
@@ -605,7 +605,7 @@ def in_game_options():
         elif in_menu.lower() == "m":
             reset_grid()
             return_home()
-            #reset_streak
+            reset_streak()
         else:
             print("                Invalid input, please choose a valid option. \n")
             in_game_options()
@@ -630,6 +630,10 @@ def reset_grid():
         game_grid.extend([" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
     else:
         return
+
+def reset_streak():
+    global streak
+    streak = 0
 
 def end_game_options(status):
 
@@ -658,19 +662,20 @@ def end_game_options(status):
             print("\n\n\n\n                            Restarting game... \n")
             sleep(delay*10)
             reset_grid()
-            #reset_streak
+            reset_streak()
             moves()
 
         elif in_menu.lower() == "d":
             clear_terminal()
             game_logo()
             reset_grid()
+            reset_streak()
             select_game()
 
         elif in_menu.lower() == "m":
             reset_grid()
             return_home()
-            #reset_streak
+            reset_streak()
         else:
             clear_terminal()
             game_logo()
