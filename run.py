@@ -3,6 +3,8 @@ import gspread
 from google.oauth2.service_account import Credentials
 import datetime
 from time import sleep # to add delay effect
+from pprint import pprint
+import termtables as tt
 import random
 
 SCOPE = [
@@ -141,18 +143,31 @@ def main_page():
             print("                  Please choose from one of the options below:\n")
             first = input(input_text)
 
-def leaderboards_page():
+def leaderboards_page(): #tbc
     """
-    Shows top 5 each difficulty for highest streak in a single session
+    Top 5 each difficulty for highest streak in a single session
     """
     clear_terminal()
     leaderboard_logo()
-    sleep(delay)
-    print("   Top 10 game streaks\n")
-
-    get_leaderbord()
+    sleep(delay/2)
+    print("   TOP 5 - Highest EASY Game Streaks in a Single Session.\n")
+    get_leaderbord("Easy")
       
-    input("   Press Enter to continue...\n")
+    input("\n   Press Enter to view 'Medium' leaderboard...\n")
+
+    clear_terminal()
+    leaderboard_logo()
+    print("   TOP 5 - Highest MEDIUM Game Streaks in a Single Session.\n")
+    get_leaderbord("Medium")
+      
+    input("\n   Press Enter to view 'Hard' leaderboard...\n")
+
+    clear_terminal()
+    leaderboard_logo()
+    print("   TOP 5 - Highest HARD Game Streaks in a Single Session.\n")
+    get_leaderbord("Hard")
+      
+    input("\n   Press Enter to exit...\n")
 
     main_page()
 
@@ -703,7 +718,6 @@ def return_home():
     #reset streak
 
 def user_id(difficulty):
-    
     global player_id
     id_data = SHEET.worksheet(difficulty)
     last_id = len(id_data.col_values(1)) # tells last column nr +1 row
@@ -718,16 +732,16 @@ def get_date():
     year = date_now.strftime("%x")
     time = date_now.strftime("%X")
 
-def get_leaderbord():
-    current_easy_data = SHEET.worksheet("Easy").get_all_values()
-    easy_data_row = current_easy_data   #[-1] paims paskutini
-    print(f'Difficulty: Easy TOP 5: \n\n {easy_data_row}\n')
-    current_medium_data = SHEET.worksheet("Medium").get_all_values()
-    medium_data_row = current_medium_data   #[-1] paims paskutini
-    print(f'Difficulty: Medium TOP 5: \n\n {medium_data_row}\n')
-    current_hard_data = SHEET.worksheet("Hard").get_all_values()
-    hard_data_row = current_hard_data   #[-1] paims paskutini
-    print(f'Difficulty: Hard TOP 5: \n\n {hard_data_row}\n')
+def get_leaderbord(difficulty):
+    current_data = SHEET.worksheet(difficulty).get_all_values()
+    #easy_data_row = current_easy_data   #[-1] paims paskutini
+    data_row = tt.to_string(current_data[1:6],
+        header = ['ID', 'PLAYER', 'STREAK', 'DATE', 'TIME'],
+        
+        style = tt.styles.rounded,
+        padding=(0, 4)
+        )
+    print(data_row)
 
 def update_leaderbord():
     if streak != 0:
