@@ -1,6 +1,7 @@
 import os # to use clear terminal function
 import gspread
 from google.oauth2.service_account import Credentials
+import datetime
 from time import sleep # to add delay effect
 import random
 
@@ -30,6 +31,11 @@ easy_grid = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
 medium_grid = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
 hard_grid = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
 
+player_id = ""
+player_name = ""
+difficulty = ""
+year = ""
+time = ""
 streak = 0
 
 def clear_terminal():
@@ -145,8 +151,15 @@ def leaderboards_page():
     leaderboard_logo()
     sleep(delay)
     print("   Top 10 game streaks\n")
-    print(leaderboard)
-    input("   Press Enter to continue...\n")
+    
+
+    #get_leaderbord()
+
+    get_date()
+    print(year)
+
+    input("\n   Press Enter to continue...\n")
+
 
     main_page()
 
@@ -689,6 +702,15 @@ def return_home():
     return
     #reset streak
 
+
+def get_date():
+
+    global year
+    global time
+
+    date_now = datetime.datetime.now()
+    year = date_now.strftime("%x")
+    time = date_now.strftime("%X")
 
 def game():
     main_page()
