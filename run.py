@@ -86,8 +86,7 @@ def leaderboard_logo():
          | |    ___  __ _  __| | ___ _ __| |__   ___   __ _ _ __ __| |
          | |   / _ \/ _` |/ _` |/ _ \ '__| '_ \ / _ \ / _` | '__/ _` |
          | |__|  __/ (_| | (_| |  __/ |  | |_) | (_) | (_| | | | (_| |
-         |_____\___|\__,_|\__,_|\___|_|  |_.__/ \___/ \__,_|_|  \__,_|                                             
-  """)
+         |_____\___|\__,_|\__,_|\___|_|  |_.__/ \___/ \__,_|_|  \__,_| """)
 
 def game_logo():
     """
@@ -108,9 +107,7 @@ def main_page():
     clear_terminal()
     main_logo()
     sleep(delay*2)
-    print("                                    WELCOME\n")
-    sleep(delay*2)
-    print("                  Please choose from one of the options below:\n")
+    print("              WELCOME, Please choose from one of the options below:\n")
     input_text = "                               [S] Start Game \n                               [L] Leaderboard \n                               [I] Instructions\n"
     first = input(input_text)
     valid_input = False
@@ -150,21 +147,21 @@ def leaderboards_page(): #tbc
     clear_terminal()
     leaderboard_logo()
     sleep(delay/2)
-    print("   TOP 5 - Highest EASY Game Streaks in a Single Session.\n")
+    print("\n   TOP 5 - Highest EASY Game Streaks in a Single Session.")
     get_leaderbord("Easy")
       
     input("\n   Press Enter to view 'Medium' leaderboard...\n")
 
     clear_terminal()
     leaderboard_logo()
-    print("   TOP 5 - Highest MEDIUM Game Streaks in a Single Session.\n")
+    print("\n   TOP 5 - Highest MEDIUM Game Streaks in a Single Session.")
     get_leaderbord("Medium")
       
     input("\n   Press Enter to view 'Hard' leaderboard...\n")
 
     clear_terminal()
     leaderboard_logo()
-    print("   TOP 5 - Highest HARD Game Streaks in a Single Session.\n")
+    print("\n   TOP 5 - Highest HARD Game Streaks in a Single Session.")
     get_leaderbord("Hard")
       
     input("\n   Press Enter to exit...\n")
