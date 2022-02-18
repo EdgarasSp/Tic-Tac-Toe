@@ -702,6 +702,13 @@ def return_home():
     return
     #reset streak
 
+def user_id(difficulty):
+    
+    global player_id
+    print(f'test {difficulty}')
+    id_data = SHEET.worksheet(difficulty)
+    last_id = len(id_data.col_values(1)) # tells last column nr +1 row
+    player_id = last_id +1 # last column nr +1 row becomes ID
 
 def get_date():
 
