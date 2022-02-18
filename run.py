@@ -343,6 +343,7 @@ def first_move():
             valid_input = True
             clear_terminal()
             game_logo()
+            
 
         else:
             clear_terminal()
@@ -605,10 +606,12 @@ def in_game_options():
         elif in_menu.lower() == "d":
             clear_terminal()
             game_logo()
+            update_leaderbord()
             reset_grid()
             select_game()
 
         elif in_menu.lower() == "m":
+            update_leaderbord()
             reset_grid()
             return_home()
             reset_streak()
@@ -647,6 +650,7 @@ def end_game_options(status):
     Asks what whould like to do after game end
     """
     sleep(delay)
+    get_date()
 
     if status == "won" or status == "draw":
         in_menu = input("                            [C] Continue playing, to increase win streak \n                            [R] Restart Current Game \n                            [D] Change Difficulty \n                            [M] Main Menu \n\n")
@@ -659,6 +663,7 @@ def end_game_options(status):
         if in_menu.lower() == "c" and status == "won" or in_menu.lower() == "c" and status == "draw":
             clear_terminal()
             game_logo()
+            update_leaderbord()
             reset_grid()
             moves()
 
@@ -674,11 +679,13 @@ def end_game_options(status):
         elif in_menu.lower() == "d":
             clear_terminal()
             game_logo()
+            update_leaderbord()
             reset_grid()
             reset_streak()
             select_game()
 
         elif in_menu.lower() == "m":
+            update_leaderbord()
             reset_grid()
             return_home()
             reset_streak()
@@ -721,6 +728,15 @@ def get_leaderbord():
     current_hard_data = SHEET.worksheet("Hard").get_all_values()
     hard_data_row = current_hard_data   #[-1] paims paskutini
     print(f'Difficulty: Hard TOP 5: \n\n {hard_data_row}\n')
+
+def update_leaderbord():
+    if streak != 0:
+        user_id(difficulty)
+        new_data = [player_id,player_name,streak,year,time]
+        leaderboard = SHEET.worksheet(difficulty)
+        leaderboard.append_row(new_data)
+    else:
+        return
 
 def game():
     main_page()
