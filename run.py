@@ -258,7 +258,7 @@ def players_name():
     sleep(delay)
     print("\n\n\n                  What is your name or aliace? (2-6 characters)\n")
     sleep(delay)
-    player_name = input("                                      Name: ")
+    player_name = input("                                      Name: ").capitalize()
     while not len(player_name) >1 or not len(player_name) <6:
         clear_terminal()
         game_logo()
@@ -267,7 +267,7 @@ def players_name():
         print("                   You have entered invalid number of characters \n")
         print("            Please enter your name or aliace again, between 2-6 characters.\n")
         sleep(delay)
-        player_name = input("                                      Name: ")
+        player_name = input("                                      Name: ").capitalize()
         
     clear_terminal()
     game_logo()
