@@ -17,9 +17,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Tic-Tac-Toe-Data')
 
 game_data = SHEET.worksheet('game_data')
-game_data = SHEET.worksheet('leaderboard')
 data = game_data.get_all_values()
-leaderboard = game_data.get_all_values()
 
 
 # Variables
@@ -145,21 +143,16 @@ def main_page():
 
 def leaderboards_page():
     """
-    Shows top 10 leaderboard for highest streak in a single session
+    Shows top 5 each difficulty for highest streak in a single session
     """
     clear_terminal()
     leaderboard_logo()
     sleep(delay)
     print("   Top 10 game streaks\n")
-    
 
-    #get_leaderbord()
-
-    get_date()
-    print(year)
-
-    input("\n   Press Enter to continue...\n")
-
+    get_leaderbord()
+      
+    input("   Press Enter to continue...\n")
 
     main_page()
 
@@ -705,7 +698,6 @@ def return_home():
 def user_id(difficulty):
     
     global player_id
-    print(f'test {difficulty}')
     id_data = SHEET.worksheet(difficulty)
     last_id = len(id_data.col_values(1)) # tells last column nr +1 row
     player_id = last_id +1 # last column nr +1 row becomes ID
@@ -718,6 +710,17 @@ def get_date():
     date_now = datetime.datetime.now()
     year = date_now.strftime("%x")
     time = date_now.strftime("%X")
+
+def get_leaderbord():
+    current_easy_data = SHEET.worksheet("Easy").get_all_values()
+    easy_data_row = current_easy_data   #[-1] paims paskutini
+    print(f'Difficulty: Easy TOP 5: \n\n {easy_data_row}\n')
+    current_medium_data = SHEET.worksheet("Medium").get_all_values()
+    medium_data_row = current_medium_data   #[-1] paims paskutini
+    print(f'Difficulty: Medium TOP 5: \n\n {medium_data_row}\n')
+    current_hard_data = SHEET.worksheet("Hard").get_all_values()
+    hard_data_row = current_hard_data   #[-1] paims paskutini
+    print(f'Difficulty: Hard TOP 5: \n\n {hard_data_row}\n')
 
 def game():
     main_page()
