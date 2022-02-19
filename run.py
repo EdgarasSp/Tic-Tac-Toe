@@ -20,6 +20,10 @@ SHEET = GSPREAD_CLIENT.open('Tic-Tac-Toe-Data')
 
 # Variables
 
+red_text = "\033[1;31;48m"
+blue_text = "\033[1;34;40m"
+white_text ="\033[1;37;40m"
+
 delay = 0.3
 delay_short = 0.15
 
@@ -44,7 +48,7 @@ def main_logo():
     """
     ACII Main Logo "Tic-Tac-Toe"
     """
-    print("""
+    print(white_text + """ 
                ______                   ______                   
               /\__  _\__               /\__  _\                  
               \/_/\ \/\_\    ___       \/_/\ \/    __      ___   
@@ -58,8 +62,7 @@ def main_logo():
                               \ \ \  / __`\  /'__`\ 
                                \ \ \/\ \_\ \/\  __/ 
                                 \ \_\ \____/\ \____\ 
-                                 \/_/\/___/  \/____/                                                 
-  """)
+                                 \/_/\/___/  \/____/ \n""")
 
 def instructions_logo():
     """
@@ -70,8 +73,7 @@ def instructions_logo():
             |_ _|_ __  ___| |_ _ __ _   _  ___| |_(_) ___  _ __  ___ 
              | || '_ \/ __| __| '__| | | |/ __| __| |/ _ \| '_ \/ __|
              | || | | \__ \ |_| |  | |_| | (__| |_| | (_) | | | \__ \ 
-            |___|_| |_|___/\__|_|   \__,_|\___|\__|_|\___/|_| |_|___/                                               
-  """)
+            |___|_| |_|___/\__|_|   \__,_|\___|\__|_|\___/|_| |_|___/""")
 
 def leaderboard_logo():
     """
@@ -94,6 +96,7 @@ def game_logo():
                   | | | |/ __|    | |/ _` |/ __|    | |/ _ \ / _ \ 
                   | | | | (__     | | (_| | (__     | | (_) |  __/
                   |_| |_|\___|    |_|\__,_|\___|    |_|\___/ \___| \n""")
+  
  
 def main_page():
     """
@@ -386,8 +389,8 @@ def moves():
                     in_game_options()
                 elif choice in range(1, game_range): #was if
                     if  game_grid[choice] == " ":
-                        game_grid[choice] = "X"
-                        player = "X"
+                        game_grid[choice] = blue_text + "X" + white_text
+                        player = blue_text + "X" + white_text
                         # Below checks if game won by player
                         if check_win(game_grid, player):
                             clear_terminal()
@@ -451,8 +454,8 @@ def random_move(game_grid):
         pc_move = random.randint(1, new_range)              
         if game_grid[pc_move] == " ":  
             check_draw()
-            game_grid[pc_move] = "O"                         
-            player = "O"
+            game_grid[pc_move] = red_text + "O" + white_text                   
+            player = red_text + "O" + white_text
             return pc_move
 
 def draw_grid(type):
@@ -623,13 +626,15 @@ def in_game_options():
             game_logo()
             update_leaderbord()
             reset_grid()
+            reset_streak()
             select_game()
 
         elif in_menu.lower() == "m":
             update_leaderbord()
             reset_grid()
-            return_home()
             reset_streak()
+            return_home()
+            
         else:
             print("                Invalid input, please choose a valid option. \n")
             in_game_options()
@@ -702,8 +707,8 @@ def end_game_options(status):
         elif in_menu.lower() == "m":
             update_leaderbord()
             reset_grid()
-            return_home()
             reset_streak()
+            return_home()
         else:
             clear_terminal()
             game_logo()
