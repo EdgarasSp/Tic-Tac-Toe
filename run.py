@@ -364,14 +364,6 @@ def moves():
     """
     global player
 
-    if first == "n":
-        clear_terminal()
-        game_logo()
-        draw_grid(difficulty)
-        clear_terminal()
-        game_logo()
-        choice = random_move(game_grid)
-
     while True:
         draw_grid(difficulty)
         #Loop to capture user computer input.
@@ -394,7 +386,7 @@ def moves():
                             game_logo()
                             current_streak()
                             draw_grid(difficulty)
-                            print("         You won! Congratulations \n ")
+                            print("         You won! Congratulations! What would you like to do now? \n ")
                             end_game_options("won")
                         break
                     else:
@@ -402,7 +394,6 @@ def moves():
                         game_logo()
                         draw_grid(difficulty)
                         print(f'        Sorry, {choice} has been chosen already. \n')
-
                 else:
                     clear_terminal()
                     game_logo()
@@ -430,7 +421,7 @@ def moves():
             clear_terminal()
             game_logo()
             draw_grid(difficulty)
-            print("                  It's a draw, your game streak is safe. \n")
+            print("                  It's a draw, your game streak is safe. Shall we try again?\n")
             end_game_options("draw")
 
 def random_move(game_grid):
@@ -439,13 +430,23 @@ def random_move(game_grid):
     """
     global player
 
+    if check_draw():
+        clear_terminal()
+        game_logo()
+        draw_grid(difficulty)
+        print("                  It's a draw, your game streak is safe. Shall we try again? \n")
+        end_game_options("draw")
+
+    new_range = game_range -1
+
     while True:
-        pc_move = random.randint(1, game_range)
-        if game_grid[pc_move] == " ":
-            game_grid[pc_move] = "O"
+        pc_move = random.randint(1, new_range)              
+        if game_grid[pc_move] == " ":  
+            check_draw()
+            game_grid[pc_move] = "O"                         
             player = "O"
             return pc_move
- 
+
 def draw_grid(type):
 
     global game_grid
@@ -467,7 +468,7 @@ def draw_grid(type):
             print(" "*20 + " " + easy_grid[7] + " | " + easy_grid[8] + " | " + easy_grid[9] + "  " +
                 " "*18 + "7" + " | " + "8" + " | " + "9" + "  \n")
             game_grid = easy_grid
-            game_range = 9 # should be 10
+            game_range = 10 
             play_area = "1-9"
             break
             
@@ -487,8 +488,8 @@ def draw_grid(type):
             print(" "*17 + " " + medium_grid[13] + " | " + medium_grid[14] + " | " + medium_grid[15] + " | " + medium_grid[16] + "  " +
                 " "*18 + "13" + " | " + "14" + " | " + "15" + " | " + "16" + "  \n ")
             game_grid = medium_grid
-            game_range = 16 # should be 16
-            play_area = "1-15"
+            game_range = 17
+            play_area = "1-16"
             break
 
         elif difficulty == "Hard":
@@ -509,7 +510,7 @@ def draw_grid(type):
             print(" "*13 + " " + hard_grid[21] + " | " + hard_grid[22] + " | " + hard_grid[23] + " | " + hard_grid[24] + " | " + hard_grid[25] + "  " +
                 " "*18 + "21" + " | " + "22" + " | " + "23" + " | " + "24" + " | " + "25" + "  \n")
             game_grid = hard_grid
-            game_range = 25 # should be 26
+            game_range = 26 
             play_area = "1-25"
             break
 
