@@ -1,8 +1,8 @@
-import os # to use clear terminal function
+import os  # to use clear terminal function
 import gspread
 from google.oauth2.service_account import Credentials
 import datetime
-from time import sleep # to add delay effect
+from time import sleep  # to add delay effect
 from pprint import pprint
 import termtables as tt
 import random
@@ -22,7 +22,7 @@ SHEET = GSPREAD_CLIENT.open('Tic-Tac-Toe-Data')
 
 red_text = "\033[1;31;48m"
 blue_text = "\033[1;34;40m"
-white_text ="\033[1;37;40m"
+white_text = "\033[1;37;40m"
 
 delay = 0.3
 delay_short = 0.15
@@ -38,42 +38,46 @@ year = ""
 time = ""
 streak = 0
 
+
 def clear_terminal():
     """
     Clear terminal to give new page loaded feal
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
 def main_logo():
     """
     ACII Main Logo "Tic-Tac-Toe"
     """
     print(white_text + """ 
-               ______                   ______                   
-              /\__  _\__               /\__  _\                  
-              \/_/\ \/\_\    ___       \/_/\ \/    __      ___   
+               ______                   ______
+              /\__  _\__               /\__  _\ 
+              \/_/\ \/\_\    ___       \/_/\ \/    __      ___
                  \ \ \/\ \  / ___\        \ \ \  /'__`\   / ___\ 
-                  \ \ \ \ \/\ \__/         \ \ \/\ \_\.\_/\ \__/ 
+                  \ \ \ \ \/\ \__/         \ \ \/\ \_\.\_/\ \__/
                    \ \_\ \_\ \____\         \ \_\ \__/.\_\ \____\ 
                     \/_/\/_/\/____/          \/_/\/__/\/_/\/____/
-                            ______                  
-                           /\__  _\                 
-                           \/_/\ \/   ___      __   
+                            ______
+                           /\__  _\ 
+                           \/_/\ \/   ___      __
                               \ \ \  / __`\  /'__`\ 
-                               \ \ \/\ \_\ \/\  __/ 
+                               \ \ \/\ \_\ \/\  __/
                                 \ \_\ \____/\ \____\ 
                                  \/_/\/___/  \/____/ \n""")
+
 
 def instructions_logo():
     """
     ACII Instructions Logo
     """
     print("""
-             ___           _                   _   _                 
+             ___           _                   _   _
             |_ _|_ __  ___| |_ _ __ _   _  ___| |_(_) ___  _ __  ___ 
              | || '_ \/ __| __| '__| | | |/ __| __| |/ _ \| '_ \/ __|
              | || | | \__ \ |_| |  | |_| | (__| |_| | (_) | | | \__ \ 
             |___|_| |_|___/\__|_|   \__,_|\___|\__|_|\___/|_| |_|___/""")
+
 
 def leaderboard_logo():
     """
@@ -86,18 +90,19 @@ def leaderboard_logo():
          | |__|  __/ (_| | (_| |  __/ |  | |_) | (_) | (_| | | | (_| |
          |_____\___|\__,_|\__,_|\___|_|  |_.__/ \___/ \__,_|_|  \__,_| """)
 
+
 def game_logo():
     """
     ACII game Logo
     """
     print("""
-                 _____ _         _____             _____          
-                |_   _(_) ___   |_   _|_ _  ___   |_   _|__   ___ 
+                 _____ _         _____             _____ 
+                |_   _(_) ___   |_   _|_ _  ___   |_   _|__   ___
                   | | | |/ __|    | |/ _` |/ __|    | |/ _ \ / _ \ 
                   | | | | (__     | | (_| | (__     | | (_) |  __/
                   |_| |_|\___|    |_|\__,_|\___|    |_|\___/ \___| \n""")
-  
- 
+
+
 def main_page():
     """
     Request player to confirm if play, view leaderboard or read instructions
@@ -115,15 +120,12 @@ def main_page():
         if first.lower() == "s":
             valid_input = True
             players_name()
-
         elif first.lower() == "l":
             valid_input = True
             leaderboards_page()
-        
         elif first.lower() == "i":
             valid_input = True
             instrunctions_page()
-
         else:
             clear_terminal()
             main_logo()
@@ -139,7 +141,8 @@ def main_page():
             print("                  Please choose from one of the options below:\n")
             first = input(input_text)
 
-def leaderboards_page(): #tbc
+
+def leaderboards_page():
     """
     Top 5 each difficulty for highest streak in a single session
     """
@@ -148,24 +151,19 @@ def leaderboards_page(): #tbc
     sleep(delay/2)
     print("\n   TOP 5 - Highest EASY Game Streaks in a Single Session.")
     get_leaderbord("Easy")
-      
     input("\n   Press Enter to view 'Medium' leaderboard...\n")
-
     clear_terminal()
     leaderboard_logo()
     print("\n   TOP 5 - Highest MEDIUM Game Streaks in a Single Session.")
     get_leaderbord("Medium")
-      
     input("\n   Press Enter to view 'Hard' leaderboard...\n")
-
     clear_terminal()
     leaderboard_logo()
     print("\n   TOP 5 - Highest HARD Game Streaks in a Single Session.")
     get_leaderbord("Hard")
-      
     input("\n   Press Enter to exit...\n")
-
     main_page()
+
 
 def instrunctions_page():
     """
@@ -174,7 +172,6 @@ def instrunctions_page():
     clear_terminal()
     instructions_logo()
     sleep(delay)
-
     print("                                    OBJECTIVE:\n")
     sleep(delay)
     print("        The object of Tic Tac Toe is to get three, four or five in a row. \n")
@@ -189,13 +186,10 @@ def instrunctions_page():
     sleep(delay_short)
     print("        game declares a draw. \n")
     sleep(delay*3)
-
     input("                           [Return] Enter to continue...\n")
-
     clear_terminal()
     instructions_logo()
     sleep(delay)
-
     print("                                        SETUP:\n")
     sleep(delay)
     print("    NAME: Enter your name, it will be displayed in the game and leaderboard. \n")
@@ -206,57 +200,44 @@ def instrunctions_page():
     sleep(delay_short)
     print("    whoever goes first, will be assigned 'X' as a 'X' always starts the game. \n")
     sleep(delay*3)
-
     input("\n                           [Return] Enter to continue...\n")
-
     clear_terminal()
     instructions_logo()
     sleep(delay)
-
     print("                                        GRIDS:\n")
     sleep(delay)
     print("    Below is an example of an Easy grid and letter references for each slot.")
     print("    You don't need to remember these references, they will be shown during game.")
     sleep(delay_short)
     print("    EASY - Grid 3 x 3 \n")
-    print("         1 | 2 | 3","        ---|---|---","         4 | 5 | 6","        ---|---|---","         7 | 8 | 9\n", sep='\n' )
+    print("         1 | 2 | 3", "        ---|---|---", "         4 | 5 | 6", "        ---|---|---", "         7 | 8 | 9\n", sep='\n')
     sleep(delay*3)
-
     input("                           [Return] Enter to continue...\n")
-
     clear_terminal()
     instructions_logo()
-    
     sleep(delay)
-
     print("                                        GRIDS:\n")
     sleep(delay)
     print("    You don't need to remember these references, they will be shown during game.")
     sleep(delay_short)
     print("    MEDIUM - Grid 4 x 4 \n")
-    print("         1  | 2  | 3  | 4 ","        ----|----|----|----","         5  | 6  | 7  | 8 ","        ----|----|----|----","         9  | 10 | 11 | 12","        ----|----|----|----","         13 | 14 | 15 | 16\n", sep='\n' )
-    
-    sleep(delay*3)
-
+    print("         1  | 2  | 3  | 4 ", "        ----|----|----|----", "         5  | 6  | 7  | 8 ", "        ----|----|----|----", "         9  | 10 | 11 | 12", "        ----|----|----|----", "         13 | 14 | 15 | 16\n", sep='\n')
+    (delay*3)
     input("                           [Return] Enter to continue...\n")
-
     clear_terminal()
     instructions_logo()
     sleep(delay)
-
     print("                                        GRIDS:\n")
     sleep(delay)
-    print("    You don't need to remember these references, they will be shown during game.")  
+    print("    You don't need to remember these references, they will be shown during game.")
     sleep(delay_short)
     print("    HARD - Grid 5 x 5 \n")
-    print("         1  | 2  | 3  | 4  | 5 ","        ----|----|----|----|----","         6  | 7  | 8  | 9  | 10","        ----|----|----|----|----","         11 | 12 | 13 | 14 | 15","        ----|----|----|----|----","         16 | 17 | 18 | 19 | 20","        ----|----|----|----|----","         21 | 22 | 23 | 24 | 25\n", sep='\n' )  
-
+    print("         1  | 2  | 3  | 4  | 5 ", "        ----|----|----|----|----", "         6  | 7  | 8  | 9  | 10", "        ----|----|----|----|----", "         11 | 12 | 13 | 14 | 15", "        ----|----|----|----|----", "         16 | 17 | 18 | 19 | 20", "        ----|----|----|----|----", "         21 | 22 | 23 | 24 | 25\n", sep='\n')
     sleep(delay*3)
-
     input("                           [Return] Enter to continue...\n")
-    
     clear_terminal()
     main_page()
+
 
 def players_name():
     """
@@ -270,7 +251,7 @@ def players_name():
     print("\n\n\n                  What is your name or aliace? (2-6 characters)\n")
     sleep(delay)
     player_name = input("                                      Name: ").capitalize()
-    while not len(player_name) >1 or not len(player_name) <6:
+    while not len(player_name) > 1 or not len(player_name) < 6:
         clear_terminal()
         game_logo()
         sleep(delay)
@@ -279,15 +260,15 @@ def players_name():
         print("            Please enter your name or aliace again, between 2-6 characters.\n")
         sleep(delay)
         player_name = input("                                      Name: ").capitalize()
-        
     clear_terminal()
     game_logo()
     sleep(delay)
     print(F"\n\n\n\n                              Welcome to the game {player_name}! \n")
-    sleep(delay*5)    
+    sleep(delay*5)
     select_game()
 
-def select_game(): 
+
+def select_game():
     """
     Asks player to select game difficulty
     """
@@ -304,9 +285,7 @@ def select_game():
     clear_terminal()
     game_logo()
     sleep(delay)
-    
     valid_input = False
-
     while not valid_input:
         if difficulty.lower() == "e":
             valid_input = True
@@ -314,27 +293,25 @@ def select_game():
             first_move()
             sleep(delay)
             moves()
-            
         elif difficulty.lower() == "m":
             valid_input = True
             difficulty = "Medium"
             first_move()
             sleep(delay)
             moves()
-            
         elif difficulty.lower() == "h":
             valid_input = True
             difficulty = "Hard"
             first_move()
             sleep(delay)
             moves()
-
         else:
             clear_terminal()
             game_logo()
             print("                 You have entered invalid option, please choose again. \n")
             sleep(delay*8)
             select_game()
+
 
 def first_move():
     """
@@ -361,6 +338,7 @@ def first_move():
             sleep(delay*8)
             first_move()
 
+
 def moves():
     """
     Loop to capture user and computer inputs.
@@ -377,18 +355,18 @@ def moves():
 
     while True:
         draw_grid(difficulty)
-        #Loop to capture user computer input.
+        # Loop to capture user computer input.
         while True:
             # capture player input
             try:
                 sleep(delay*2)
                 print(f'        Now {player_name}, it is yor turn, type a grid position.\n')
-                #print(f'        Computer choose: {choice}. Now {player_name}, it is yor turn, type a grid position.\n')
+                # print(f'        Computer choose: {choice}. Now {player_name}, it is yor turn, type a grid position.\n')
                 choice = int(input())
                 if choice == 0:
                     in_game_options()
-                elif choice in range(1, game_range): #was if
-                    if  game_grid[choice] == " ":
+                elif choice in range(1, game_range):
+                    if game_grid[choice] == " ":
                         game_grid[choice] = blue_text + "X" + white_text
                         player = blue_text + "X" + white_text
                         # Below checks if game won by player
@@ -415,25 +393,22 @@ def moves():
                 game_logo()
                 draw_grid(difficulty)
                 print("        Invalid input, please choose a valid number. \n")
-                
-
         clear_terminal()
-        game_logo()      
+        game_logo()
         choice = random_move(game_grid)
-
-        if  check_win(game_grid, player):
+        if check_win(game_grid, player):
             clear_terminal()
             game_logo()
             draw_grid(difficulty)
             print("         Computer Wins! Sorry, better luck next time. \n")
             end_game_options("loss")
-        
         if check_draw():
             clear_terminal()
             game_logo()
             draw_grid(difficulty)
-            print("                  It's a draw, your game streak is safe. Shall we try again?\n")
+            print("         It's a draw, your game streak is safe. Shall we try again?\n")
             end_game_options("draw")
+
 
 def random_move(game_grid):
     """
@@ -445,18 +420,19 @@ def random_move(game_grid):
         clear_terminal()
         game_logo()
         draw_grid(difficulty)
-        print("                  It's a draw, your game streak is safe. Shall we try again? \n")
+        print("         It's a draw, your game streak is safe. Shall we try again? \n")
         end_game_options("draw")
 
-    new_range = game_range -1
+    new_range = game_range - 1
 
     while True:
-        pc_move = random.randint(1, new_range)              
-        if game_grid[pc_move] == " ":  
+        pc_move = random.randint(1, new_range)
+        if game_grid[pc_move] == " ":
             check_draw()
-            game_grid[pc_move] = red_text + "O" + white_text                   
+            game_grid[pc_move] = red_text + "O" + white_text
             player = red_text + "O" + white_text
             return pc_move
+
 
 def draw_grid(type):
 
@@ -479,11 +455,9 @@ def draw_grid(type):
             print(" "*20 + " " + easy_grid[7] + " | " + easy_grid[8] + " | " + easy_grid[9] + "  " +
                 " "*18 + "7" + " | " + "8" + " | " + "9" + "  \n")
             game_grid = easy_grid
-            game_range = 10 
+            game_range = 10
             play_area = "1-9"
             break
-            
-
         elif difficulty == "Medium":
             valid_input = True
             print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
@@ -502,7 +476,6 @@ def draw_grid(type):
             game_range = 17
             play_area = "1-16"
             break
-
         elif difficulty == "Hard":
             valid_input = True
             print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
@@ -521,10 +494,9 @@ def draw_grid(type):
             print(" "*13 + " " + hard_grid[21] + " | " + hard_grid[22] + " | " + hard_grid[23] + " | " + hard_grid[24] + " | " + hard_grid[25] + "  " +
                 " "*18 + "21" + " | " + "22" + " | " + "23" + " | " + "24" + " | " + "25" + "  \n")
             game_grid = hard_grid
-            game_range = 26 
+            game_range = 26
             play_area = "1-25"
             break
-
         else:
             clear_terminal()
             game_logo()
@@ -532,12 +504,13 @@ def draw_grid(type):
             sleep(delay*8)
             select_game()
 
+
 def check_win(game_grid, player):
     """
     Check if won
     """
     if game_grid == easy_grid:
-        if  (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player) or \
+        if (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player) or \
             (game_grid[4] == player and game_grid[5] == player and game_grid[6] == player) or \
             (game_grid[7] == player and game_grid[8] == player and game_grid[9] == player) or \
             (game_grid[1] == player and game_grid[4] == player and game_grid[7] == player) or \
@@ -549,7 +522,7 @@ def check_win(game_grid, player):
         else:
             return False
     elif game_grid == medium_grid:
-        if  (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player and game_grid[4] == player) or \
+        if (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player and game_grid[4] == player) or \
             (game_grid[5] == player and game_grid[6] == player and game_grid[7] == player and game_grid[8] == player) or \
             (game_grid[9] == player and game_grid[10] == player and game_grid[11] == player and game_grid[12] == player) or \
             (game_grid[13] == player and game_grid[14] == player and game_grid[15] == player and game_grid[16] == player) or \
@@ -563,7 +536,7 @@ def check_win(game_grid, player):
         else:
             return False
     elif game_grid == hard_grid:
-        if  (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player and game_grid[4] == player and game_grid[5] == player) or \
+        if (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player and game_grid[4] == player and game_grid[5] == player) or \
             (game_grid[6] == player and game_grid[7] == player and game_grid[8] == player and game_grid[9] == player and game_grid[10] == player) or \
             (game_grid[11] == player and game_grid[12] == player and game_grid[13] == player and game_grid[14] == player and game_grid[15] == player) or \
             (game_grid[16] == player and game_grid[17] == player and game_grid[18] == player and game_grid[19] == player and game_grid[20] == player) or \
@@ -579,6 +552,7 @@ def check_win(game_grid, player):
         else:
             return False
 
+
 def check_draw():
     """
     Checks if grid is no longer empty
@@ -588,12 +562,14 @@ def check_draw():
     else:
         return True
 
+
 def current_streak():
     """
     Counts game streak
     """
     global streak
     streak += 1
+
 
 def in_game_options():
     """
@@ -620,7 +596,6 @@ def in_game_options():
             reset_grid()
             reset_streak()
             moves()
-
         elif in_menu.lower() == "d":
             clear_terminal()
             game_logo()
@@ -628,17 +603,15 @@ def in_game_options():
             reset_grid()
             reset_streak()
             select_game()
-
         elif in_menu.lower() == "m":
             update_leaderbord()
             reset_grid()
             reset_streak()
             return_home()
-            
         else:
             print("                Invalid input, please choose a valid option. \n")
             in_game_options()
-    
+
 
 def reset_grid():
     """
@@ -647,7 +620,6 @@ def reset_grid():
 
     clear_terminal()
     game_logo()
-
     if game_grid == easy_grid:
         game_grid.clear()
         game_grid.extend([" ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
@@ -660,12 +632,13 @@ def reset_grid():
     else:
         return
 
+
 def reset_streak():
     global streak
     streak = 0
 
-def end_game_options(status):
 
+def end_game_options(status):
     """
     Asks what whould like to do after game end
     """
@@ -686,7 +659,6 @@ def end_game_options(status):
             update_leaderbord()
             reset_grid()
             moves()
-
         elif in_menu.lower() == "r":
             clear_terminal()
             game_logo()
@@ -695,7 +667,6 @@ def end_game_options(status):
             reset_grid()
             reset_streak()
             moves()
-
         elif in_menu.lower() == "d":
             clear_terminal()
             game_logo()
@@ -703,7 +674,6 @@ def end_game_options(status):
             reset_grid()
             reset_streak()
             select_game()
-
         elif in_menu.lower() == "m":
             update_leaderbord()
             reset_grid()
@@ -715,18 +685,20 @@ def end_game_options(status):
             print("\n\n\n                  Invalid input, please choose a valid option. \n")
             end_game_options(status)
 
+
 def return_home():
     clear_terminal()
     game_logo()
     main_page()
     return
-    #reset streak
+
 
 def user_id(difficulty):
     global player_id
     id_data = SHEET.worksheet(difficulty)
-    last_id = len(id_data.col_values(1)) # tells last column nr +1 row
-    player_id = last_id +1 # last column nr +1 row becomes ID
+    last_id = len(id_data.col_values(1))  # tells last column nr +1 row
+    player_id = last_id + 1  # last column nr +1 row becomes ID
+
 
 def get_date():
 
@@ -737,31 +709,31 @@ def get_date():
     year = date_now.strftime("%x")
     time = date_now.strftime("%X")
 
+
 def get_leaderbord(difficulty):
     current_data = SHEET.worksheet(difficulty).sort((3, 'des'))
     sorted_data = SHEET.worksheet(difficulty).get_all_values()
-    #easy_data_row = current_easy_data   #[-1] paims paskutini
     data_row = tt.to_string(sorted_data[1:6],
-        header = ['ID', 'PLAYER', 'STREAK', 'DATE', 'TIME'],
-        style = tt.styles.rounded,
-        padding=(0, 4)
-        )
+        header=['ID', 'PLAYER', 'STREAK', 'DATE', 'TIME'],
+        style=tt.styles.rounded,
+        padding=(0, 4))
+
     print(data_row)
+
 
 def update_leaderbord():
     if streak != 0:
         user_id(difficulty)
-        new_data = [player_id,player_name,streak,year,time]
+        new_data = [player_id, player_name, streak, year, time]
         leaderboard = SHEET.worksheet(difficulty)
         leaderboard.append_row(new_data)
     else:
         return
 
+
 def game():
     print(white_text + " "*50)
     clear_terminal()
     main_page()
-
-
 
 game()
