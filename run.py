@@ -758,6 +758,8 @@ def update_leaderbord():
         return
 
 def game():
+    print(white_text + " "*50)
+    clear_terminal()
     main_page()
 
 
