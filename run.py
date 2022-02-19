@@ -18,10 +18,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Tic-Tac-Toe-Data')
 
-game_data = SHEET.worksheet('game_data')
-data = game_data.get_all_values()
-
-
 # Variables
 
 delay = 0.3
@@ -355,8 +351,6 @@ def first_move():
             valid_input = True
             clear_terminal()
             game_logo()
-            
-
         else:
             clear_terminal()
             game_logo()
@@ -730,11 +724,11 @@ def get_date():
     time = date_now.strftime("%X")
 
 def get_leaderbord(difficulty):
-    current_data = SHEET.worksheet(difficulty).get_all_values()
+    current_data = SHEET.worksheet(difficulty).sort((3, 'des'))
+    sorted_data = SHEET.worksheet(difficulty).get_all_values()
     #easy_data_row = current_easy_data   #[-1] paims paskutini
-    data_row = tt.to_string(current_data[1:6],
+    data_row = tt.to_string(sorted_data[1:6],
         header = ['ID', 'PLAYER', 'STREAK', 'DATE', 'TIME'],
-        
         style = tt.styles.rounded,
         padding=(0, 4)
         )
