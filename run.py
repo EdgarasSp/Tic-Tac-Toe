@@ -364,6 +364,14 @@ def moves():
     """
     global player
 
+    if first == "n":
+        clear_terminal()
+        game_logo()
+        draw_grid(difficulty)
+        clear_terminal()
+        game_logo()
+        choice = random_move(game_grid)
+
     while True:
         draw_grid(difficulty)
         #Loop to capture user computer input.
