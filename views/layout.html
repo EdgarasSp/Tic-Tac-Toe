@@ -27,11 +27,7 @@
             padding-left: 130px;
         }
 
-        #main-button {
-            text-align: center;
-            padding-top: 183px;
-            padding-left: 130px;
-        }
+       
 
         /**
         * Default styles for xterm.js
@@ -99,15 +95,19 @@
             cursor: default;
             position: absolute;
             right: 0;
-            left: 0;
-            top: 0;
-            bottom: 0;
+            /*bottom: 0;*/
             background-color: rgb(0, 0, 0);
             width: 730px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -0%);
         }
 
         .xterm .xterm-screen {
             position: relative;
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, -0%);
         }
 
         .xterm .xterm-screen canvas {
@@ -183,7 +183,11 @@
             text-transform: uppercase;
             margin: 10px;
             border-radius: 8px;
+            position: fixed;
+            left: 70%;
+            top:50%;
         }
+        
     </style>
 </head>
 
