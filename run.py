@@ -27,8 +27,13 @@ delay = 0.3
 delay_short = 0.15
 
 easy_grid = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
-medium_grid = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
-hard_grid = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+medium_grid = [
+                " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+                " ", " ", " ", " ", " ", " ", " "]
+hard_grid = [
+            " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+            " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+            " ", " ", " ", " ", " "]
 
 player_id = ""
 player_name = ""
@@ -49,20 +54,20 @@ def main_logo():
     """
     ACII Main Logo "Tic-Tac-Toe"
     """
-    print(white_text + """ 
+    print(white_text + """
                ______                   ______
-              /\__  _\__               /\__  _\ 
+              /\__  _\__               /\__  _\\
               \/_/\ \/\_\    ___       \/_/\ \/    __      ___
-                 \ \ \/\ \  / ___\        \ \ \  /'__`\   / ___\ 
+                 \ \ \/\ \  / ___\        \ \ \  /'__`\   / ___\\
                   \ \ \ \ \/\ \__/         \ \ \/\ \_\.\_/\ \__/
-                   \ \_\ \_\ \____\         \ \_\ \__/.\_\ \____\ 
+                   \ \_\ \_\ \____\         \ \_\ \__/.\_\ \____\\
                     \/_/\/_/\/____/          \/_/\/__/\/_/\/____/
                             ______
-                           /\__  _\ 
+                           /\__  _\\
                            \/_/\ \/   ___      __
-                              \ \ \  / __`\  /'__`\ 
+                              \ \ \  / __`\  /'__`\\
                                \ \ \/\ \_\ \/\  __/
-                                \ \_\ \____/\ \____\ 
+                                \ \_\ \____/\ \____\\
                                  \/_/\/___/  \/____/ \n""")
 
 
@@ -72,9 +77,9 @@ def instructions_logo():
     """
     print("""
              ___           _                   _   _
-            |_ _|_ __  ___| |_ _ __ _   _  ___| |_(_) ___  _ __  ___ 
+            |_ _|_ __  ___| |_ _ __ _   _  ___| |_(_) ___  _ __  ___
              | || '_ \/ __| __| '__| | | |/ __| __| |/ _ \| '_ \/ __|
-             | || | | \__ \ |_| |  | |_| | (__| |_| | (_) | | | \__ \ 
+             | || | | \__ \ |_| |  | |_| | (__| |_| | (_) | | | \__ \\
             |___|_| |_|___/\__|_|   \__,_|\___|\__|_|\___/|_| |_|___/""")
 
 
@@ -83,7 +88,7 @@ def leaderboard_logo():
     ACII Leaderboard Logo
     """
     print("""
-          _                   _           _                         _ 
+          _                   _           _                         _
          | |    ___  __ _  __| | ___ _ __| |__   ___   __ _ _ __ __| |
          | |   / _ \/ _` |/ _` |/ _ \ '__| '_ \ / _ \ / _` | '__/ _` |
          | |__|  __/ (_| | (_| |  __/ |  | |_) | (_) | (_| | | | (_| |
@@ -95,9 +100,9 @@ def game_logo():
     ACII game Logo
     """
     print("""
-                 _____ _         _____             _____ 
+                 _____ _         _____             _____
                 |_   _(_) ___   |_   _|_ _  ___   |_   _|__   ___
-                  | | | |/ __|    | |/ _` |/ __|    | |/ _ \ / _ \ 
+                  | | | |/ __|    | |/ _` |/ __|    | |/ _ \ / _ \\
                   | | | | (__     | | (_| | (__     | | (_) |  __/
                   |_| |_|\___|    |_|\__,_|\___|    |_|\___/ \___| \n""")
 
@@ -111,9 +116,10 @@ def main_page():
     main_logo()
     sleep(delay*2)
     print(" "*14 + "WELCOME, Please choose from one of the options below:\n")
-    input_text = (" "*35 + "[S] Start Game \n" +
-        " "*35 + "[L] Leaderboard \n" +
-        " "*35 + "[I] Instructions\n")
+    input_text = (
+                    " "*35 + "[S] Start Game \n" +
+                    " "*35 + "[L] Leaderboard \n" +
+                    " "*35 + "[I] Instructions\n")
     first = input(input_text)
     valid_input = False
 
@@ -150,19 +156,31 @@ def leaderboards_page():
     clear_terminal()
     leaderboard_logo()
     sleep(delay/2)
-    print("\n" + " "*12 + "TOP 5 - Highest EASY Game Streaks in a Single Session.")
+    print(
+            "\n" + " "*12 +
+            "TOP 5 - Highest EASY Game Streaks in a Single Session.")
     get_leaderboard("Easy")
-    input("\n" + " "*35 + "[Enter] To view 'Medium' leaderboard...\n")
+    input(
+            "\n" + " "*35 +
+            "[Enter] To view 'Medium' leaderboard...\n")
     clear_terminal()
     leaderboard_logo()
-    print("\n" + " "*12 + "TOP 5 - Highest MEDIUM Game Streaks in a Single Session.")
+    print(
+            "\n" + " "*12 +
+            "TOP 5 - Highest MEDIUM Game Streaks in a Single Session.")
     get_leaderboard("Medium")
-    input("\n" + " "*35 + "[Enter} To view 'Hard' leaderboard...\n")
+    input(
+            "\n" + " "*35 +
+            "[Enter} To view 'Hard' leaderboard...\n")
     clear_terminal()
     leaderboard_logo()
-    print("\n" + " "*12 + "TOP 5 - Highest HARD Game Streaks in a Single Session.")
+    print(
+            "\n" + " "*12 +
+            "TOP 5 - Highest HARD Game Streaks in a Single Session.")
     get_leaderboard("Hard")
-    input("\n" + " "*40 + "[Enter] To exit to Menu...\n")
+    input(
+            "\n" + " "*40 +
+            "[Enter] To exit to Menu...\n")
     main_page()
 
 
@@ -175,23 +193,28 @@ def instrunctions_page():
     sleep(delay)
     print("\n" + " "*36 + "OBJECTIVE:\n")
     sleep(delay)
-    print(" "*4 +
-        "The object of Tic Tac Toe is to get three, four "
-        "or five in a row. \n")
+    print(
+            " "*4 +
+            "The object of Tic Tac Toe is to get three, four "
+            "or five in a row. \n")
     sleep(delay_short)
-    print(" "*4 +
-        "The first player is known as X and the second is O. \n")
+    print(
+            " "*4 +
+            "The first player is known as X and the second is O. \n")
     sleep(delay_short)
-    print(" "*4 +
-        "Players alternate placing 'X' and 'O' on the "
-        "game board until either - \n")
-    print(" "*4 +
-        "opponent has three, four or five in a row or "
-        "all squares are filled. \n")
+    print(
+            " "*4 +
+            "Players alternate placing 'X' and 'O' on the "
+            "game board until either - \n")
+    print(
+            " "*4 +
+            "opponent has three, four or five in a row or "
+            "all squares are filled. \n")
     sleep(delay_short)
-    print(" "*4 +
-        "X always goes first, and in the event that no one has "
-        "a set in a row, \n")
+    print(
+            " "*4 +
+            "X always goes first, and in the event that no one has "
+            "a set in a row, \n")
     sleep(delay_short)
     print(" "*4 + "game declares a draw. \n")
     sleep(delay*2)
@@ -201,21 +224,25 @@ def instrunctions_page():
     sleep(delay)
     print("\n" + " "*36 + "SETUP:\n")
     sleep(delay)
-    print(" "*4 +
-        "NAME: Enter your name, it will be displayed in the "
-        "game and leaderboard. \n")
+    print(
+            " "*4 +
+            "NAME: Enter your name, it will be displayed in the "
+            "game and leaderboard. \n")
     sleep(delay_short)
-    print(" "*4 +
-        "GRID SIZE: Choose the size of the grid Easy 3x3, "
-        "Medium 4x4 or Hard 5x5. \n")
+    print(
+            " "*4 +
+            "GRID SIZE: Choose the size of the grid Easy 3x3, "
+            "Medium 4x4 or Hard 5x5. \n")
     sleep(delay_short)
-    print(" "*4 +
-        "ORDER: Choose who should play first, the player or "
-        "the computer. Remember, \n")
+    print(
+            " "*4 +
+            "ORDER: Choose who should play first, the player or "
+            "the computer. Remember, \n")
     sleep(delay_short)
-    print(" "*4 +
-        "whoever goes first, will be assigned 'X' as a 'X' "
-        "always starts the game. \n\n\n\n\n")
+    print(
+            " "*4 +
+            "whoever goes first, will be assigned 'X' as a 'X' "
+            "always starts the game. \n\n\n\n\n")
     sleep(delay*2)
     input(" "*43 + "[Return] Enter to continue...")
     clear_terminal()
@@ -223,18 +250,21 @@ def instrunctions_page():
     sleep(delay)
     print("\n" + " "*31 + "EASY  GRID (3 x 3)\n")
     sleep(delay)
-    print(" "*4 +
-        "Below is an example of an Easy grid and letter "
-        "references for each slot.\n")
-    print(" "*4 +
-        "You don't need to remember these references, they "
-        "will be shown during game.\n")
+    print(
+            " "*4 +
+            "Below is an example of an Easy grid and letter "
+            "references for each slot.\n")
+    print(
+            " "*4 +
+            "You don't need to remember these references, they "
+            "will be shown during game.\n")
     sleep(delay_short)
-    print(" "*35 + "1 | 2 | 3 ", " "
-        " "*17 + "---|---|---", " "
-        " "*17 + " 4 | 5 | 6 ", " "
-        " "*17 + "---|---|---", " "
-        " "*17 + " 7 | 8 | 9\n\n\n", sep='\n')
+    print(
+            " "*35 + "1 | 2 | 3 ", " "
+            " "*17 + "---|---|---", " "
+            " "*17 + " 4 | 5 | 6 ", " "
+            " "*17 + "---|---|---", " "
+            " "*17 + " 7 | 8 | 9\n\n\n", sep='\n')
     sleep(delay*3)
     input(" "*43 + "[Return] Enter to continue...\n")
     clear_terminal()
@@ -242,17 +272,19 @@ def instrunctions_page():
     sleep(delay*3)
     print("\n" + " "*32 + "MEDIUM GRID (4 x 4) \n")
     sleep(delay)
-    print(" "*4 +
-        "You don't need to remember these references, they will "
-        "be shown during game\n.")
+    print(
+            " "*4 +
+            "You don't need to remember these references, they will "
+            "be shown during game\n.")
     sleep(delay_short)
-    print(" "*33 + "1  | 2  | 3  | 4 ", " "
-        " "*16 + "----|----|----|----", " "
-        " "*16 + " 5  | 6  | 7  | 8 ", " "
-        " "*16 + "----|----|----|----", " "
-        " "*16 + " 9  | 10 | 11 | 12", " "
-        " "*16 + "----|----|----|----", " "
-        " "*16 + " 13 | 14 | 15 | 16\n\n\n", sep='\n')
+    print(
+            " "*33 + "1  | 2  | 3  | 4 ", " "
+            " "*16 + "----|----|----|----", " "
+            " "*16 + " 5  | 6  | 7  | 8 ", " "
+            " "*16 + "----|----|----|----", " "
+            " "*16 + " 9  | 10 | 11 | 12", " "
+            " "*16 + "----|----|----|----", " "
+            " "*16 + " 13 | 14 | 15 | 16\n\n\n", sep='\n')
     (delay*3)
     input(" "*43 + "[Return] Enter to continue...\n")
     clear_terminal()
@@ -260,19 +292,21 @@ def instrunctions_page():
     sleep(delay)
     print("\n" + " "*30 + "HARD GRID (5 x 5) \n")
     sleep(delay)
-    print(" "*4 +
-        "You don't need to remember these references, they will "
-        "be shown during game.\n")
+    print(
+            " "*4 +
+            "You don't need to remember these references, they will "
+            "be shown during game.\n")
     sleep(delay_short)
-    print(" "*29 + "1  | 2  | 3  | 4  | 5 ", " "
-        " "*14 + "----|----|----|----|----", " "
-        " "*14 + " 6  | 7  | 8  | 9  | 10", " "
-        " "*14 + "----|----|----|----|----", " "
-        " "*14 + " 11 | 12 | 13 | 14 | 15", " "
-        " "*14 + "----|----|----|----|----", " "
-        " "*14 + " 16 | 17 | 18 | 19 | 20", " "
-        " "*14 + "----|----|----|----|----", " "
-        " "*14 + " 21 | 22 | 23 | 24 | 25\n", sep='\n')
+    print(
+            " "*29 + "1  | 2  | 3  | 4  | 5 ", " "
+            " "*14 + "----|----|----|----|----", " "
+            " "*14 + " 6  | 7  | 8  | 9  | 10", " "
+            " "*14 + "----|----|----|----|----", " "
+            " "*14 + " 11 | 12 | 13 | 14 | 15", " "
+            " "*14 + "----|----|----|----|----", " "
+            " "*14 + " 16 | 17 | 18 | 19 | 20", " "
+            " "*14 + "----|----|----|----|----", " "
+            " "*14 + " 21 | 22 | 23 | 24 | 25\n", sep='\n')
     sleep(delay*3)
     input(" "*43 + "[Return] Enter to continue...")
     clear_terminal()
@@ -297,17 +331,19 @@ def players_name():
         sleep(delay)
         print("\n\n\n" + " "*40 + "UPS...\n ")
         print(" "*20 + "You have entered invalid number of characters \n")
-        print(" "*13 +
-            "Please enter your name or aliace again, between "
-            "2-6 characters.\n")
+        print(
+                " "*13 +
+                "Please enter your name or aliace again, between "
+                "2-6 characters.\n")
         sleep(delay)
         player_name = input(" "*35 + "Name: ").capitalize()
     clear_terminal()
     game_logo()
     sleep(delay)
-    print(F'\n\n\n                           '
-        f'Welcome to the game '
-        f'{player_name}! \n')
+    print(
+            f'\n\n\n                           '
+            f'Welcome to the game '
+            f'{player_name}! \n')
     sleep(delay*5)
     select_game()
 
@@ -322,13 +358,15 @@ def select_game():
     clear_terminal()
     game_logo()
     sleep(delay)
-    print(f'\n\n\n                        '
-        f'{player_name}'
-        f', choose games difficulty level:\n')
+    print(
+            f'\n\n\n                        '
+            f'{player_name}'
+            f', choose games difficulty level:\n')
     sleep(delay)
-    input_text = (" "*28 + "[E] Easy Mode    (3x3) Grid \n " +
-        " "*27 + "[M] Medium Mode  (4x4) Grid \n " +
-        " "*27 + "[H] Hard Mode    (5x5) Grid\n")
+    input_text = (
+                    " "*28 + "[E] Easy Mode    (3x3) Grid \n " +
+                    " "*27 + "[M] Medium Mode  (4x4) Grid \n " +
+                    " "*27 + "[H] Hard Mode    (5x5) Grid\n")
     difficulty = input(input_text)
     clear_terminal()
     game_logo()
@@ -356,8 +394,9 @@ def select_game():
         else:
             clear_terminal()
             game_logo()
-            print(" "*15 + "You have entered invalid option, please "
-                "choose again. \n")
+            print(
+                    " "*15 + "You have entered invalid option, please "
+                    "choose again. \n")
             sleep(delay*8)
             select_game()
 
@@ -372,8 +411,9 @@ def first_move():
     game_logo()
     sleep(delay)
     print("\n\n\n" + " "*22 + "Would you like to take the first move?\n")
-    first = input(" "*26 + "[Y] Yes, assign me an 'X' \n" +
-        " "*26 + "[N] No, Computer should start first \n ")
+    first = input(
+                    " "*26 + "[Y] Yes, assign me an 'X' \n" +
+                    " "*26 + "[N] No, Computer should start first \n ")
     valid_input = False
 
     while not valid_input:
@@ -384,9 +424,10 @@ def first_move():
         else:
             clear_terminal()
             game_logo()
-            print("\n\n\n" + " "*22 +
-                "You have entered invalid option, "
-                "please choose again. \n")
+            print(
+                    "\n\n\n" + " "*22 +
+                    "You have entered invalid option, "
+                    "please choose again. \n")
             sleep(delay*8)
             first_move()
 
@@ -412,9 +453,10 @@ def moves():
             # capture player input
             try:
                 sleep(delay*2)
-                print(f'         '
-                    f'Now {player_name}, it is yor turn, '
-                    f'type a grid position.\n')
+                print(
+                        f'         '
+                        f'Now {player_name}, it is yor turn, '
+                        f'type a grid position.\n')
                 choice = int(input())
                 if choice == 0:
                     in_game_options()
@@ -428,9 +470,10 @@ def moves():
                             game_logo()
                             current_streak()
                             draw_grid(difficulty)
-                            print(" "*9 +
-                                "You won! Congratulations! What would "
-                                "you like to do now? \n ")
+                            print(
+                                    " "*9 +
+                                    "You won! Congratulations! What would "
+                                    "you like to do now? \n ")
                             end_game_options("won")
                         break
                     else:
@@ -442,16 +485,18 @@ def moves():
                     clear_terminal()
                     game_logo()
                     draw_grid(difficulty)
-                    print(f'        '
-                        f'Invalid number, please choose number between '
-                        f'{play_area}.\n')
+                    print(
+                            f'        '
+                            f'Invalid number, please choose number between '
+                            f'{play_area}.\n')
             except ValueError:
                 clear_terminal()
                 game_logo()
                 draw_grid(difficulty)
-                print(" "*9 +
-                    "Invalid input, please choose "
-                    "a valid number. \n")
+                print(
+                        " "*9 +
+                        "Invalid input, please choose "
+                        "a valid number. \n")
         clear_terminal()
         game_logo()
         choice = random_move(game_grid)
@@ -465,9 +510,10 @@ def moves():
             clear_terminal()
             game_logo()
             draw_grid(difficulty)
-            print(" "*9 +
-                "It's a draw, your game streak is safe. "
-                "Shall we try again?\n")
+            print(
+                    " "*9 +
+                    "It's a draw, your game streak is safe. "
+                    "Shall we try again?\n")
             end_game_options("draw")
 
 
@@ -481,9 +527,10 @@ def random_move(game_grid):
         clear_terminal()
         game_logo()
         draw_grid(difficulty)
-        print(" "*9 +
-            "It's a draw, your game streak is safe. "
-            "Shall we try again? \n")
+        print(
+                " "*9 +
+                "It's a draw, your game streak is safe. "
+                "Shall we try again? \n")
         end_game_options("draw")
 
     new_range = game_range - 1
@@ -508,14 +555,23 @@ def draw_grid(type):
     while not valid_game_grid:
         if difficulty == "Easy":
             valid_input = True
-            print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
-            print(" "*20 + " " + easy_grid[1] + " | " + easy_grid[2] + " | " + easy_grid[3] + "  " +
+            print(
+                f'        Win Streak: {streak}'
+                f'             [0] Menu'
+                f'          Difficulty: {difficulty}\n')
+            print(
+                " "*20 + " " + easy_grid[1] + " | " + easy_grid[2] +
+                " | " + easy_grid[3] + "  " +
                 " "*18 + "1" + " | " + "2" + " | " + "3" + "  ")
             print(" "*20 + "---|---|---" + " "*18 + "---|---|---")
-            print(" "*20 + " " + easy_grid[4] + " | " + easy_grid[5] + " | " + easy_grid[6] + "  " +
+            print(
+                " "*20 + " " + easy_grid[4] + " | " + easy_grid[5] +
+                " | " + easy_grid[6] + "  " +
                 " "*18 + "4" + " | " + "5" + " | " + "6" + "  ")
             print(" "*20 + "---|---|---" + " "*18 + "---|---|---")
-            print(" "*20 + " " + easy_grid[7] + " | " + easy_grid[8] + " | " + easy_grid[9] + "  " +
+            print(
+                " "*20 + " " + easy_grid[7] + " | " + easy_grid[8] +
+                " | " + easy_grid[9] + "  " +
                 " "*18 + "7" + " | " + "8" + " | " + "9" + "  \n")
             game_grid = easy_grid
             game_range = 10
@@ -523,39 +579,80 @@ def draw_grid(type):
             break
         elif difficulty == "Medium":
             valid_input = True
-            print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
-            print(" "*17 + " " + medium_grid[1] + " | " + medium_grid[2] + " | " + medium_grid[3] + " | " + medium_grid[4] + "  " +
-                " "*18 + "1 " + " | " + "2 " + " | " + "3 " + " | " + "4 " + "  ")
+            print(
+                f'        Win Streak: {streak}'
+                f'             [0] Menu'
+                f'          Difficulty: {difficulty}\n')
+            print(
+                " "*17 + " " + medium_grid[1] + " | " + medium_grid[2] +
+                " | " + medium_grid[3] + " | " + medium_grid[4] + "  " +
+                " "*18 + "1 " + " | " + "2 " + " | " + "3 " + " | " + "4 " +
+                "  ")
             print(" "*17 + "---|---|---|---" + " "*18 + "----|----|----|----")
-            print(" "*17 + " " + medium_grid[5] + " | " + medium_grid[6] + " | " + medium_grid[7] + " | " + medium_grid[8] + "  " +
-                " "*18 + "5 " + " | " + "6 " + " | " + "7 " + " | " + "8 " + "  ")
+            print(
+                " "*17 + " " + medium_grid[5] + " | " + medium_grid[6] +
+                " | " + medium_grid[7] + " | " + medium_grid[8] + "  " +
+                " "*18 + "5 " + " | " + "6 " + " | " + "7 " + " | " + "8 " +
+                "  ")
             print(" "*17 + "---|---|---|---" + " "*18 + "----|----|----|----")
-            print(" "*17 + " " + medium_grid[9] + " | " + medium_grid[10] + " | " + medium_grid[11] + " | " + medium_grid[12] + "  " +
-                " "*18 + "9 " + " | " + "10" + " | " + "11" + " | " + "12" + "  ")
+            print(
+                " "*17 + " " + medium_grid[9] + " | " + medium_grid[10] +
+                " | " + medium_grid[11] + " | " + medium_grid[12] + "  " +
+                " "*18 + "9 " + " | " + "10" + " | " + "11" + " | " + "12" +
+                "  ")
             print(" "*17 + "---|---|---|---" + " "*18 + "----|----|----|----")
-            print(" "*17 + " " + medium_grid[13] + " | " + medium_grid[14] + " | " + medium_grid[15] + " | " + medium_grid[16] + "  " +
-                " "*18 + "13" + " | " + "14" + " | " + "15" + " | " + "16" + "  \n ")
+            print(
+                " "*17 + " " + medium_grid[13] + " | " + medium_grid[14] +
+                " | " + medium_grid[15] + " | " + medium_grid[16] + "  " +
+                " "*18 + "13" + " | " + "14" + " | " + "15" + " | " + "16" +
+                "  \n ")
             game_grid = medium_grid
             game_range = 17
             play_area = "1-16"
             break
         elif difficulty == "Hard":
             valid_input = True
-            print(f'        Win Streak: {streak}             [0] Menu          Difficulty: {difficulty}\n')
-            print(" "*13 + " " + hard_grid[1] + " | " + hard_grid[2] + " | " + hard_grid[3] + " | " + hard_grid[4] + " | " + hard_grid[5] + "  " +
-                " "*18 + "1 " + " | " + "2 " + " | " + "3 " + " | " + "4 " + " | " + "5 " + "  ")
-            print(" "*13 + "---|---|---|---|---" + " "*18 + "----|----|----|----|----")
-            print(" "*13 + " " + hard_grid[6] + " | " + hard_grid[7] + " | " + hard_grid[8] + " | " + hard_grid[9] + " | " + hard_grid[10] + "  " +
-                " "*18 + "6 " + " | " + "7 " + " | " + "8 " + " | " + "9 " + " | " + "10" + "  ")
-            print(" "*13 + "---|---|---|---|---" + " "*18 + "----|----|----|----|----")
-            print(" "*13 + " " + hard_grid[11] + " | " + hard_grid[12] + " | " + hard_grid[13] + " | " + hard_grid[14] + " | " + hard_grid[15] + "  " +
-                " "*18 + "11" + " | " + "12" + " | " + "13" + " | " + "14" + " | " + "15" + "  ")
-            print(" "*13 + "---|---|---|---|---" + " "*18 + "----|----|----|----|----")
-            print(" "*13 + " " + hard_grid[16] + " | " + hard_grid[17] + " | " + hard_grid[18] + " | " + hard_grid[19] + " | " + hard_grid[20] + "  " +
-                " "*18 + "16" + " | " + "17" + " | " + "18" + " | " + "19" + " | " + "20" + "  ")
-            print(" "*13 + "---|---|---|---|---" + " "*18 + "----|----|----|----|----")
-            print(" "*13 + " " + hard_grid[21] + " | " + hard_grid[22] + " | " + hard_grid[23] + " | " + hard_grid[24] + " | " + hard_grid[25] + "  " +
-                " "*18 + "21" + " | " + "22" + " | " + "23" + " | " + "24" + " | " + "25" + "  \n")
+            print(
+                f'        Win Streak: {streak}'
+                f'             [0] Menu'
+                f'          Difficulty: {difficulty}\n')
+            print(
+                " "*13 + " " + hard_grid[1] + " | " + hard_grid[2] +
+                " | " + hard_grid[3] + " | " + hard_grid[4] +
+                " | " + hard_grid[5] + "  " + " "*18 + "1 " + " | " +
+                "2 " + " | " + "3 " + " | " + "4 " + " | " + "5 " + "  ")
+            print(
+                " "*13 + "---|---|---|---|---" + " "*18 +
+                "----|----|----|----|----")
+            print(
+                " "*13 + " " + hard_grid[6] + " | " + hard_grid[7] +
+                " | " + hard_grid[8] + " | " + hard_grid[9] +
+                " | " + hard_grid[10] + "  " + " "*18 + "6 " + " | " +
+                "7 " + " | " + "8 " + " | " + "9 " + " | " + "10" + "  ")
+            print(
+                " "*13 + "---|---|---|---|---" + " "*18 +
+                "----|----|----|----|----")
+            print(
+                " "*13 + " " + hard_grid[11] + " | " + hard_grid[12] +
+                " | " + hard_grid[13] + " | " + hard_grid[14] +
+                " | " + hard_grid[15] + "  " + " "*18 + "11" + " | " +
+                "12" + " | " + "13" + " | " + "14" + " | " + "15" + "  ")
+            print(
+                " "*13 + "---|---|---|---|---" + " "*18 +
+                "----|----|----|----|----")
+            print(
+                " "*13 + " " + hard_grid[16] + " | " + hard_grid[17] +
+                " | " + hard_grid[18] + " | " + hard_grid[19] +
+                " | " + hard_grid[20] + "  " + " "*18 + "16" + " | " +
+                "17" + " | " + "18" + " | " + "19" + " | " + "20" + "  ")
+            print(
+                " "*13 + "---|---|---|---|---" + " "*18 +
+                "----|----|----|----|----")
+            print(
+                " "*13 + " " + hard_grid[21] + " | " + hard_grid[22] +
+                " | " + hard_grid[23] + " | " + hard_grid[24] +
+                " | " + hard_grid[25] + "  " + " "*18 + "21" + " | " +
+                "22" + " | " + "23" + " | " + "24" + " | " + "25" + "  \n")
             game_grid = hard_grid
             game_range = 26
             play_area = "1-25"
@@ -563,9 +660,10 @@ def draw_grid(type):
         else:
             clear_terminal()
             game_logo()
-            print("\n\n\n" + " "*18 +
-                "You have entered invalid "
-                "option, please choose again. \n")
+            print(
+                    "\n\n\n" + " "*18 +
+                    "You have entered invalid "
+                    "option, please choose again. \n")
             sleep(delay*8)
             select_game()
 
@@ -574,45 +672,66 @@ def check_win(game_grid, player):
     """
     Check if won
     """
-    if game_grid == easy_grid:
-        if (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player) or \
-            (game_grid[4] == player and game_grid[5] == player and game_grid[6] == player) or \
-            (game_grid[7] == player and game_grid[8] == player and game_grid[9] == player) or \
-            (game_grid[1] == player and game_grid[4] == player and game_grid[7] == player) or \
-            (game_grid[2] == player and game_grid[5] == player and game_grid[8] == player) or \
-            (game_grid[3] == player and game_grid[6] == player and game_grid[9] == player) or \
-            (game_grid[1] == player and game_grid[5] == player and game_grid[9] == player) or \
-            (game_grid[3] == player and game_grid[5] == player and game_grid[7] == player):
+
+    g = game_grid
+    p = player
+
+    if g == easy_grid:
+        if (
+            (g[1] == p and g[2] == p and g[3] == p) or
+            (g[4] == p and g[5] == p and g[6] == p) or
+            (g[7] == p and g[8] == p and g[9] == p) or
+            (g[1] == p and g[4] == p and g[7] == p) or
+            (g[2] == p and g[5] == p and g[8] == p) or
+            (g[3] == p and g[6] == p and g[9] == p) or
+            (g[1] == p and g[5] == p and g[9] == p) or
+            (g[3] == p and g[5] == p and g[7] == p)
+                ):
             return True
         else:
             return False
-    elif game_grid == medium_grid:
-        if (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player and game_grid[4] == player) or \
-            (game_grid[5] == player and game_grid[6] == player and game_grid[7] == player and game_grid[8] == player) or \
-            (game_grid[9] == player and game_grid[10] == player and game_grid[11] == player and game_grid[12] == player) or \
-            (game_grid[13] == player and game_grid[14] == player and game_grid[15] == player and game_grid[16] == player) or \
-            (game_grid[1] == player and game_grid[5] == player and game_grid[9] == player and game_grid[13] == player) or \
-            (game_grid[2] == player and game_grid[6] == player and game_grid[10] == player and game_grid[14] == player) or \
-            (game_grid[3] == player and game_grid[7] == player and game_grid[11] == player and game_grid[15] == player) or \
-            (game_grid[4] == player and game_grid[8] == player and game_grid[12] == player and game_grid[16] == player) or \
-            (game_grid[1] == player and game_grid[6] == player and game_grid[11] == player and game_grid[16] == player) or \
-            (game_grid[4] == player and game_grid[7] == player and game_grid[10] == player and game_grid[13] == player):
+    elif g == medium_grid:
+        if (
+            (g[1] == p and g[2] == p and g[3] == p and g[4] == p) or
+            (g[5] == p and g[6] == p and g[7] == p and g[8] == p) or
+            (g[9] == p and g[10] == p and g[11] == p and g[12] == p) or
+            (g[13] == p and g[14] == p and g[15] == p and g[16] == p) or
+            (g[1] == p and g[5] == p and g[9] == p and g[13] == p) or
+            (g[2] == p and g[6] == p and g[10] == p and g[14] == p) or
+            (g[3] == p and g[7] == p and g[11] == p and g[15] == p) or
+            (g[4] == p and g[8] == p and g[12] == p and g[16] == p) or
+            (g[1] == p and g[6] == p and g[11] == p and g[16] == p) or
+            (g[4] == p and g[7] == p and g[10] == p and g[13] == p)
+                ):
             return True
         else:
             return False
-    elif game_grid == hard_grid:
-        if (game_grid[1] == player and game_grid[2] == player and game_grid[3] == player and game_grid[4] == player and game_grid[5] == player) or \
-            (game_grid[6] == player and game_grid[7] == player and game_grid[8] == player and game_grid[9] == player and game_grid[10] == player) or \
-            (game_grid[11] == player and game_grid[12] == player and game_grid[13] == player and game_grid[14] == player and game_grid[15] == player) or \
-            (game_grid[16] == player and game_grid[17] == player and game_grid[18] == player and game_grid[19] == player and game_grid[20] == player) or \
-            (game_grid[21] == player and game_grid[22] == player and game_grid[23] == player and game_grid[24] == player and game_grid[25] == player) or \
-            (game_grid[1] == player and game_grid[6] == player and game_grid[11] == player and game_grid[16] == player and game_grid[21] == player) or \
-            (game_grid[2] == player and game_grid[7] == player and game_grid[12] == player and game_grid[17] == player and game_grid[22] == player) or \
-            (game_grid[3] == player and game_grid[8] == player and game_grid[13] == player and game_grid[18] == player and game_grid[23] == player) or \
-            (game_grid[4] == player and game_grid[9] == player and game_grid[14] == player and game_grid[19] == player and game_grid[24] == player) or \
-            (game_grid[5] == player and game_grid[10] == player and game_grid[15] == player and game_grid[20] == player and game_grid[25] == player) or \
-            (game_grid[1] == player and game_grid[7] == player and game_grid[13] == player and game_grid[19] == player and game_grid[25] == player) or \
-            (game_grid[5] == player and game_grid[9] == player and game_grid[13] == player and game_grid[17] == player and game_grid[21] == player):
+    elif g == hard_grid:
+        if (
+            (g[1] == p and g[2] == p and g[3] == p and g[4] == p and
+             g[5] == p) or
+            (g[6] == p and g[7] == p and g[8] == p and g[9] == p and
+             g[10] == p) or
+            (g[11] == p and g[12] == p and g[13] == p and g[14] == p and
+             g[15] == p) or
+            (g[16] == p and g[17] == p and g[18] == p and g[19] == p and
+             g[20] == p) or
+            (g[21] == p and g[22] == p and g[23] == p and g[24] == p and
+             g[25] == p) or
+            (g[1] == p and g[6] == p and g[11] == p and g[16] == p and
+             g[21] == p) or
+            (g[2] == p and g[7] == p and g[12] == p and g[17] == p and
+             g[22] == p) or
+            (g[3] == p and g[8] == p and g[13] == p and g[18] == p and
+             g[23] == p) or
+            (g[4] == p and g[9] == p and g[14] == p and g[19] == p and
+             g[24] == p) or
+            (g[5] == p and g[10] == p and g[15] == p and g[20] == p and
+             g[25] == p) or
+            (g[1] == p and g[7] == p and g[13] == p and g[19] == p and
+             g[25] == p) or
+            (g[5] == p and g[9] == p and g[13] == p and g[17] == p and
+             g[21] == p)):
             return True
         else:
             return False
@@ -644,10 +763,11 @@ def in_game_options():
     game_logo()
     sleep(delay)
     print("\n\n\n" + " "*32 + "In game menu: \n")
-    in_menu = input(" "*32 + "[C] Continue Game \n " +
-        " "*31 + "[R] Restart Current Game \n " +
-        " "*31 + "[D] Change Difficulty \n " +
-        " "*31 + "[M] Main Menu \n\n")
+    in_menu = input(
+                    " "*32 + "[C] Continue Game \n " +
+                    " "*31 + "[R] Restart Current Game \n " +
+                    " "*31 + "[D] Change Difficulty \n " +
+                    " "*31 + "[M] Main Menu \n\n")
     valid_input = False
 
     while not valid_input:
@@ -693,10 +813,15 @@ def reset_grid():
         game_grid.extend([" ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
     elif game_grid == medium_grid:
         game_grid.clear()
-        game_grid.extend([" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
+        game_grid.extend([
+                            " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+                            " ", " ", " ", " ", " ", " ", " "])
     elif game_grid == hard_grid:
         game_grid.clear()
-        game_grid.extend([" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
+        game_grid.extend([
+                            " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+                            " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+                            " ", " ", " ", " ", " ", " "])
     else:
         return
 
@@ -714,19 +839,23 @@ def end_game_options(status):
     get_date()
 
     if status == "won" or status == "draw":
-        in_menu = input(" "*32 + " [C] Continue playing, to increase streak." +
-            "\n" + " "*32 + " [R] Restart Current Game \n " +
-            " "*32 + "[D] Change Difficulty \n " +
-            " "*32 + "[M] Main Menu \n\n")
+        in_menu = input(
+                        " "*32 + " [C] Continue playing, to increase streak." +
+                        "\n" + " "*32 + " [R] Restart Current Game \n " +
+                        " "*32 + "[D] Change Difficulty \n " +
+                        " "*32 + "[M] Main Menu \n\n")
     else:
-        in_menu = input(" "*32 + " [R] Restart Current Game \n " +
-            " "*32 + "[D] Change Difficulty \n " +
-            " "*32 + "[M] Main Menu \n\n")
+        in_menu = input(
+                        " "*32 + " [R] Restart Current Game \n " +
+                        " "*32 + "[D] Change Difficulty \n " +
+                        " "*32 + "[M] Main Menu \n\n")
 
     valid_input = False
 
     while not valid_input:
-        if in_menu.lower() == "c" and status == "won" or in_menu.lower() == "c" and status == "draw":
+        if (
+             in_menu.lower() == "c" and status == "won" or
+             in_menu.lower() == "c" and status == "draw"):
             clear_terminal()
             game_logo()
             update_leaderboard()
@@ -755,8 +884,9 @@ def end_game_options(status):
         else:
             clear_terminal()
             game_logo()
-            print("\n\n\n" + " "*9 + "Invalid input, please choose "
-                "a valid option. \n")
+            print(
+                    "\n\n\n" + " "*9 + "Invalid input, please choose "
+                    "a valid option. \n")
             end_game_options(status)
 
 
@@ -787,10 +917,11 @@ def get_date():
 def get_leaderboard(difficulty):
     current_data = SHEET.worksheet(difficulty).sort((3, 'des'))
     sorted_data = SHEET.worksheet(difficulty).get_all_values()
-    data_row = tt.to_string(sorted_data[1:6],
-        header=['ID', 'PLAYER', 'STREAK', 'DATE', 'TIME'],
-        style=tt.styles.rounded,
-        padding=(0, 4))
+    data_row = tt.to_string(
+                sorted_data[1:6],
+                header=['ID', 'PLAYER', 'STREAK', 'DATE', 'TIME'],
+                style=tt.styles.rounded,
+                padding=(0, 4))
 
     print(data_row)
 

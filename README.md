@@ -244,7 +244,9 @@ New code:
 
 Python build was tested through the [PEP8 online](http://pep8online.com/s) .py file. 
 
-All pages have passed with no major errors.
+All pages have passed with no errors.
+
+<a href="https://imgur.com/KMj5vl1"><img src="https://i.imgur.com/KMj5vl1.png" title="source: imgur.com" /></a>
 
 # **5. Road Map**
 > ##### [Table of Content](#table-of-contents)
