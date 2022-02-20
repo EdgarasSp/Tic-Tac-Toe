@@ -1,8 +1,8 @@
-import os  # to use clear terminal function
+import os
 import gspread
 from google.oauth2.service_account import Credentials
 import datetime
-from time import sleep  # to add delay effect
+from time import sleep
 import termtables as tt
 import random
 
@@ -52,7 +52,7 @@ def clear_terminal():
 
 def main_logo():
     """
-    ACII Main Logo "Tic-Tac-Toe"
+    ACII Main Page Logo
     """
     print(white_text + """
                ______                   ______
@@ -97,7 +97,7 @@ def leaderboard_logo():
 
 def game_logo():
     """
-    ACII game Logo
+    ACII In Game Logo
     """
     print("""
                  _____ _         _____             _____
@@ -109,7 +109,9 @@ def game_logo():
 
 def main_page():
     """
-    Request player to confirm if play, view leaderboard or read instructions
+    Section requests user to confirm next step.
+    Captures, validates input and routes to chosen option
+    or notifies of invalid input.
     """
 
     clear_terminal()
@@ -151,7 +153,8 @@ def main_page():
 
 def leaderboards_page():
     """
-    Top 5 each difficulty for highest streak in a single session
+    Section shows top 5 streaks within each difficulty.
+    Data pulled from Google Sheets and displayed on screen.
     """
     clear_terminal()
     leaderboard_logo()
@@ -186,7 +189,7 @@ def leaderboards_page():
 
 def instrunctions_page():
     """
-    Shows game instructions and grid examples
+    Section shows game instructions and examples of the grids
     """
     clear_terminal()
     instructions_logo()
@@ -316,6 +319,7 @@ def instrunctions_page():
 def players_name():
     """
     Request player's name, name used in game and leaderboards for tracking
+    Input validated if invalid notifies user
     """
     global player_name
 
@@ -350,7 +354,8 @@ def players_name():
 
 def select_game():
     """
-    Asks player to select game difficulty
+    Asks player to select game difficulty.
+    Validates input if invalid notifies user
     """
     global difficulty
     global first_move
@@ -403,7 +408,8 @@ def select_game():
 
 def first_move():
     """
-    Asks player to select game order
+    Asks player to select game order, user or pc
+    Validates input if invalid notifies user
     """
     global first
 
@@ -434,7 +440,9 @@ def first_move():
 
 def moves():
     """
-    Loop to capture user and computer inputs.
+    Loop to capture user and computers inputs.
+    Read and writes in array, checks game end.
+    Validates input if invalid notifies user
     """
     global player
 
@@ -519,7 +527,8 @@ def moves():
 
 def random_move(game_grid):
     """
-    Computer random move
+    Generates computer random move
+    Checks for game end
     """
     global player
 
@@ -545,7 +554,9 @@ def random_move(game_grid):
 
 
 def draw_grid(type):
-
+    """
+    Draws in game grid and reference grid
+    """
     global game_grid
     global game_range
     global play_area
@@ -670,7 +681,7 @@ def draw_grid(type):
 
 def check_win(game_grid, player):
     """
-    Check if won
+    Check if won againts possible combinations
     """
 
     g = game_grid
@@ -740,6 +751,7 @@ def check_win(game_grid, player):
 def check_draw():
     """
     Checks if grid is no longer empty
+    Ends game if true
     """
     if game_grid.count(" ") > 1:
         return False
@@ -758,6 +770,7 @@ def current_streak():
 def in_game_options():
     """
     Asks what would like to do in game menu
+    Validates input if invalid notifies the user
     """
     clear_terminal()
     game_logo()
@@ -834,6 +847,7 @@ def reset_streak():
 def end_game_options(status):
     """
     Asks what would like to do after game end
+    Validates input if invalid notifies the user
     """
     sleep(delay)
     get_date()
@@ -891,6 +905,9 @@ def end_game_options(status):
 
 
 def return_home():
+    """
+    Resets game
+    """
     clear_terminal()
     game_logo()
     main_page()
@@ -898,6 +915,10 @@ def return_home():
 
 
 def user_id(difficulty):
+    """
+    Generates user ID, pulls next empty row in google sheet
+    uses that as ID
+    """
     global player_id
     id_data = SHEET.worksheet(difficulty)
     last_id = len(id_data.col_values(1))  # tells last column nr +1 row
@@ -905,7 +926,9 @@ def user_id(difficulty):
 
 
 def get_date():
-
+    """
+    Pulls todays date and time for leaderboards
+    """
     global year
     global time
 
@@ -915,6 +938,10 @@ def get_date():
 
 
 def get_leaderboard(difficulty):
+    """
+    Pulls leaderboard data from google sheets
+    Draws leaderboard
+    """
     current_data = SHEET.worksheet(difficulty).sort((3, 'des'))
     sorted_data = SHEET.worksheet(difficulty).get_all_values()
     data_row = tt.to_string(
@@ -927,6 +954,9 @@ def get_leaderboard(difficulty):
 
 
 def update_leaderboard():
+    """
+    Writes new leaderboard data to Google Sheets
+    """
     if streak != 0:
         user_id(difficulty)
         new_data = [player_id, player_name, streak, year, time]
@@ -937,6 +967,9 @@ def update_leaderboard():
 
 
 def game():
+    """
+    Starts Game, sets terminal colour.
+    """
     print(white_text + " "*50)
     clear_terminal()
     main_page()
