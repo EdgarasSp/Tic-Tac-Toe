@@ -1,6 +1,8 @@
-<a href="https://imgur.com/6WtrGFQ"><img src="https://i.imgur.com/6WtrGFQ.png" title="source: imgur.com" /></a>
 
-# HANGMAN
+# **Tic Tac Toe - Game**
+
+
+**Link to the Live project site: [HERE](https://tic-tac-toe-esp.herokuapp.com/)**
 
 ### Table of Contents  
 [1. Introduction](#1-introduction)  
@@ -8,20 +10,14 @@
 &nbsp;&nbsp;&nbsp; [2.1. Use Case](#21-use-case)   
 &nbsp;&nbsp;&nbsp; [2.2. Build](#22-build)   
 [3. Features](#3-features)  
-&nbsp;&nbsp;&nbsp; [3.1. Header and Footer](#31-header-and-footer)   
-&nbsp;&nbsp;&nbsp; [3.2. Home](#32-home)   
-&nbsp;&nbsp;&nbsp; [3.3. Order](#33-order)  
-&nbsp;&nbsp;&nbsp; [3.4. Contact](#34-contact)  
-&nbsp;&nbsp;&nbsp; [3.5. Gallery](#35-gallery)  
+&nbsp;&nbsp;&nbsp; [3.1. Menu Page](#31-menu-page)   
 [4. Testing](#4-testing)   
 &nbsp;&nbsp;&nbsp; [4.1. Bugs and Fixes](#41-bugs-and-fixes)  
-&nbsp;&nbsp;&nbsp; [4.2. Integrity](#42-integrity)  
-&nbsp;&nbsp;&nbsp; [4.3. Build](#43-build)  
+&nbsp;&nbsp;&nbsp; [4.2. Integrity](#42-integrity)   
 [5. Road Map](#5-road-map)    
-&nbsp;&nbsp;&nbsp; [5.1. Essential Features](#51-essential-features)  
-&nbsp;&nbsp;&nbsp; [5.2. Additional Features](#52-additional-features)  
+&nbsp;&nbsp;&nbsp; [5.1. Essential Features](#51-essential-features)   
 [6. Deployment](#6-deployment)    
-&nbsp;&nbsp;&nbsp; [6.1. Deployment to GitHub](#61-deployment-to-github)  
+&nbsp;&nbsp;&nbsp; [6.1. Deployment to Heroku](#61-deployment-to-heroku)  
 &nbsp;&nbsp;&nbsp; [6.2. Cloning on GitHub](#62-cloning-on-github)  
 [7. Credits](#7-credits)    
 &nbsp;&nbsp;&nbsp; [7.1. Code](#71-code)  
@@ -31,14 +27,14 @@
 # **1. Introduction**
 > ##### [Table of Content](#table-of-contents)
 
-This game is a simple, more ethnical version of the original hangman game. The purpose of this game design is to be more sensible and inclusive for younger players. Let them experience the word guessing game without need to be shown the concept of hanging by drawing.
+Tic-tac-toe, is an old paper-and-pencil game for two players who take turns marking the spaces in a three-by-three grid with X or O.
 
-Game host three levels of difficultly, all players have 8 lives/wrong guesses regardless of the level, medium and hard levels add an additional level of urgency by introducing a timer function and furthermore increasing the length of the words. The timer function limits the time player has available to them to make the guess before the games timer runs out, resulting in game over.
+This game is a simple, digital version of the game played against the computer. Game host three levels of difficultly from easy using 3 x 3 grid to hard using 5 x 5 grid to connect 5 to win.
 
-In addition, game runs a built in score function to encourage player to to get the perfect score of 60,80 and 120 points based on the difficulty setting.
+Game also keeps track of your win streaks, top 5 scores in each difficulty level are available within built in leaderboards.
 
-To test your skills or to beat the highest score, please use the following link to play the [HANGMAN](https://edgarassp.github.io/hangman/) game!   
-To view the code, please use the following link: [EdgarasSp GitHub](https://github.com/EdgarasSp/hangman) repository.
+To test your skills and beat the highest score, please use the following link to play the [Tic Tac Toe](https://tic-tac-toe-esp.herokuapp.com/) game!   
+To view the code, please use the following link: [EdgarasSp GitHub](https://github.com/EdgarasSp/Tic-Tac-Toe) repository.
 <br>
 
 # **2. Initial Development** 
@@ -50,87 +46,73 @@ To view the code, please use the following link: [EdgarasSp GitHub](https://gith
 ### **Target Audience:**
 * Casual Players.
 * Family-centred.
-* 13 to 99 age bracket.
-
 
 ### **Customer Stories:**
 * Play a simple game not requiring any credentials.
 * Children friendly game with educational purpose.  
-* Experience all game levels in their own time without pressure from the developer.
-* Progress through the game levels without being exposed to the hanging images or drawings.
+* To record and view game high scores.
+* A clean and easy navigation throughout the game menu.
 
 ### **Customer UX Requirements:**
-1. Play a word guessing game.
+1. Play game.
 2. Track game score.
 3. Change difficulty levels.
 4. Option to reset the game  or return to menu.
 
 ### **Customer UX Requirement Solution:**
-1. To play the word guessing game:
+1. To play the Tic Tac Toe game:
 
-	Play can initiate the game from the main menu page. When the current game ends, user will also be prompted to confirm if they would like to return to the main menu or restart the game with same difficulty.
+	Player can start the game from the main menu page. Game instruction are also accessible from the main menu. During the game, player can access in-game menu to change game settings or return to menu.
 
 2. To track game score:
 
-	Game score is displayed in the top left corner of the "game" page. For every correct letter guessed user is rewarded with 10 points and for every incorrect guess 5 points deducted. 
+	Player can access in-game menu to change game settings or return to menuAfter each winning game the win streak number will increase. Achieved streak after each game section is logged and displayed in the leaderboards accesable from the main menu. Streak is lost if game is reset or lost. 
 
 3. Change games difficulty levels:
 
-	In the main menu, player has 3 difficulty options to choose from. Parameters for each game mode provided in the game card just above start game button.
-
-    When game is running, player has an option to return to the main menu should they wish to change the difficulty at any time. Using "Menu" button located at the bottom rights side of the page will direct player to the main page.
-
+	Game difficulty is chosen during the initial game startup. When game is running, player has an option to change difficulty or to return to the main menu and restart the game.
 
 4. Reset the game or return to the menu.
 
-    After each successful or unsuccessful game played, player ise prompted to restart the current game or return to the menu to change the difficulty.
+    After each successful or unsuccessful game played, player is prompted to restart the current game or return to the menu to change the difficulty.
     
 ## **2.2. Build**
 
-### **2.2.1. Languages**
+### **2.2.1. Languages, dependencies and libraries**
 
-Site uses HTML, CSS and JavaScript programming languages.
+Project built using Python programming languages.
 
-* [HTTP5](https://en.wikipedia.org/wiki/HTML5) - Hypertext Markup Language - Version 5.2
-* [CSS3](https://en.wikipedia.org/wiki/CSS) - Cascading Style Sheets - Level 3
-* [JS](https://en.wikipedia.org/wiki/JavaScript) - JavaScript
+* [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) - Python - Version 3.11
 
-### **2.2.2. Wireframe**
+Project dependencies.
 
-Game was designed using the [Balsamiq](https://balsamiq.com/) wireframe toolset. Wireframes enabled to mock up and test layout designs to accommodate various media screen sizes.
+* [GSpread](https://docs.gspread.org/en/latest/) - gspread is a Python API for Google Sheet. To install, type below in the terminal:
+```
+pip install gspread
+```
+* [termtables](https://pypi.org/project/termtables/) - termtables is a lightweight Python 3 package for pretty-printing tables on the command line. To install, type below in the terminal:
+```
+pip install termtables
+```
+Project libraries.
 
- Wireframe page designs were based on 3 screen sizes, designs are accessible via below links:
- 
-* [Wireframe for 600px [+]](https://i.imgur.com/An0acUY.png)
-* [Wireframe for 600px [-]](https://i.imgur.com/qpBrsvo.png)
-* [Wireframe for 320px [+]](https://i.imgur.com/qpBrsvo.png)
+```
+import os                   # To use clear terminal function
+import gspread              # To connect to Google spreadsheets
+import datetime             # To import current date and time for leaderboards
+from time import sleep      # To add delay effect between print() statements
+import termtables as tt     # To format leaderboard table
+import random               # To generate a random number in range
+```
 
 
-### **2.2.3. Images**
+### **2.2.2. Diagram**
 
-No images were used in the design of this games.
+Game diagram was designed using the [draw.io](https://www.diagrams.net/) aim for the diagram was to plan the implementation prior to commencing coding to avoid unnecessary changes mid-production.
 
-### **2.2.4. Color**
+* [Game Diagram](https://i.imgur.com/1DlXtiJ.png)
 
-Dominant color was matched against the extracted complement color using the [Adobe Color](https://color.adobe.com/create/image) tool.
-
-
-Dominant color was generated using [ColorSpace](https://mycolor.space.com).
-
-Website color pallet:
-* Dominant:		[#E0C0DB](https://mycolor.space/?hex=%23E0C0DB&sub=1#0c0db&sub=1)
-* Complement: 	[#3F1C91](https://mycolor.space/?hex=%233F1C91&sub=1#0c0db&sub=1)
-
-### **2.2.5. Fonts**
-
-Text fonts set to default font family Helvetica.
-
-Website Icons obtained from [Font Awesome](https://fontawesome.com/).
-
-Icon List:
-* [Heart full ](https://fontawesome.com/v5.15/icons/heart?style=solid)
-* [Heart hollow](https://fontawesome.com/v5.15/icons/heart?style=regular)
-
+<a href="https://i.imgur.com/1DlXtiJ.png"><img src="https://i.imgur.com/1DlXtiJ.png" title="source: imgur.com" /></a>
 
 # **3. Features** 
 > ##### [Table of Content](#table-of-contents)
@@ -138,35 +120,87 @@ Icon List:
 
 ## **3.1. Menu Page**
 
-    
-   <a href="https://imgur.com/f0MJlt0"><img src="https://i.imgur.com/f0MJlt0.png" title="source: imgur.com" /></a>
-<br>
+* __Menu__
 
-* __Game Rules__ - For ease of use, game rules outline in plain sight, immediately after website loads.
+Main menu simply shows three available options available to the player, to start the game, view leaderboards or view instructions.
 
-* __Game Modes__ - Players have 3 difficulties to choose from, differences      between the games modes are outlined in each individual game mode card.
+<a href="https://imgur.com/BR30Joe"><img src="https://i.imgur.com/BR30Joe.png" title="source: imgur.com" /></a>
+
+* __Leaderboard__
+
+Leaderboard is updated after each game session, if the game streak is within our Top 5 records, it will be show in the leaderboard. Each difficulty has it's own leaderboard and the top 5 records are shown. Leaderboard is updated each time it is viewed.
+
+<a href="https://imgur.com/wJhUgZA"><img src="https://i.imgur.com/wJhUgZA.png" title="source: imgur.com" /></a>
+
+
+* __Instructions__ 
+
+Simple instructions and references to the different board sizes.
+
+<a href="https://imgur.com/R83O89K"><img src="https://i.imgur.com/R83O89K.png" title="source: imgur.com" /></a>
 
 ## **3.2. Game Page**
 
- Game page has a simple design to help with accessability.
+ Game page has a simple design and navigation to help with accessibility.
 
-<a href="https://imgur.com/zIdGFH0"><img src="https://i.imgur.com/zIdGFH0.png" title="source: imgur.com" /></a>
+* __Name__
 
-* __Info-Bar__ - Info-bar located at the top of the game window, it displays the key information for player, such as score (+10 for correct answer and -5 for the wrong answer). Timer which is used within medium or hard game modes to visually show the count down. Lastly game difficulty confirmation noted in th top right corner.
+Just to capture the name of the player and great in the game. If lucky enough witha high win streak, Players name will be saved in the leaderboard. To change the name player just needs to restart the game by returning to the main menu and starting a new game session.
 
-* __Lives__ - Each player has 8 lives/guesses, each remaining guess displayed as solid core heart and each incorrect answer will replace the solid core heart with hollow heart. Once all the hearts are out, game will end. The correctly guessed letters will be displayed on the guess word box underneath the lives.
-
-* __Keyboard__ - Player requires to use on screen keyboard, each guess will be recorded, check against the answer and if correct guess, said key pressed will be coloured in green and each incorrect guess will be marked in dark pink color. Once the letter has been guessed, regardless of the guess state, that key will be disabled and no longer be clickable.
-
-* __Back Button__ - At any time player has option to return to the main menu.
+<a href="https://imgur.com/wloSbAq"><img src="https://i.imgur.com/wloSbAq.png" title="source: imgur.com" /></a>
 
 
- <a href="https://imgur.com/BavRlhB"><img src="https://i.imgur.com/BavRlhB.png" title="source: imgur.com" /></a>
+__Difficulty__ 
 
-* __Gave Over Message__ Once the game ends, game will show game status message, either won or lost. If lost the word will be displayed.
+Player can choose between three levels of difficulty: Easy, Medium and Hard.
+Each level increases board size by one column and row. Making it harder to get a row or column or vertical lines due to larger board size. 
 
-* __Restart & Menu Buttons__ - Buttons to restart the game and return to home have been implemented to create more fluid experience. PLayer can reset the game to the same game mode or return to the main menu and choose different game mode.
-   
+<a href="https://imgur.com/r2tBOff"><img src="https://i.imgur.com/r2tBOff.png" title="source: imgur.com" /></a>
+
+
+__First Move By__ 
+
+Player has an opportunity to decide if computer should make the firs move or player. Statistically first player has higher chance of winning.
+
+<a href="https://imgur.com/b30mMfH"><img src="https://i.imgur.com/b30mMfH.png" title="source: imgur.com" /></a>
+
+
+__Game Window__ 
+
+Game window displays: Current streak, Menu button, Current difficulty, Game board, Reference board and message line.
+
+* Current Streak - Point is awarded for a win only, after a win if player chooses to continue game, the streak will transfer to the next game. Streak is only lost if game is lost or player resets, changes difficulty or returns to teh main menu.
+
+* Menu and difficulty level - Show number to type to enter the in game menu and difficulty just show current game difficulty selected.
+
+* Game board - Will display O and X in different colors, player is always an X.
+
+* Reference board - To be used as a reference for the number to enter. Reference board will be matching each difficulty level from 3 x 3 to 4 x 4 and 5 x 5 respectively.
+
+* Message lines - Updates will be shown underneath the game board letting user know about game status and reminding then to make the next move.
+
+<a href="https://imgur.com/wMKvhIn"><img src="https://i.imgur.com/wMKvhIn.png" title="source: imgur.com" /></a>
+ 
+
+__In Game Menu__ 
+
+During the game, player can enter in game menu to pause the game and then continue the game or restart the game, change difficulty or return to the menu.
+
+<a href="https://imgur.com/Xo9F8Wv"><img src="https://i.imgur.com/Xo9F8Wv.png" title="source: imgur.com" /></a>
+
+
+__End game Menu__ -
+
+Once one of the possible win choices is matched, the user gets a message printed with the result either win, lose or a draw.
+
+Player get options to restart the game, change difficulty or return to the main menu.
+
+Additionally, if game was Won or Draw, they get the option to continue the game and increase their game streak for the leaderboard. Continue options is only show if game won or draw as streak is retained.
+
+Game is won or lost when 3 or 4 or 5 X or O or crossed horizontally, vertically or diagonally.
+Game is draw if no more empty windows available.
+
+<a href="https://imgur.com/ApdTt88"><img src="https://i.imgur.com/ApdTt88.png" title="source: imgur.com" /></a>
 
 # **4. Testing**
 > ##### [Table of Content](#table-of-contents)
@@ -174,94 +208,43 @@ Icon List:
 
 ## **4.1. Bugs and Fixes**
 
-1. Having two HTML page, I  needed to store a variable in memory. Originally added script directly inside index.html page but received below error.
+There was one main bug found during testing. The running random_move(game_grid) function, with code below. At random intervals during the game would fail to **RETURN pc_move** even if the unique number was generated. this is seen in the print output taken whilst function was running (highlighted in yellow). At two occasions a unique number was created ( 9 and 8) but code did not return that value and continued running until **maximum recursion depth exceeded** error was triggered.
 
-    <a href="https://imgur.com/EBmgUTK"><img src="https://i.imgur.com/EBmgUTK.png" title="source: imgur.com" /></a>
-    <a href="https://imgur.com/L60kR8b"><img src="https://i.imgur.com/L60kR8b.png" title="source: imgur.com" /></a>
+Original code:
 
-    To resolve, had to move script to a separate .js file in link to it in both HTML pages.
+```Python
+  while True:
+        pc_move = random.randint(1, new_range)
+        if game_grid[pc_move] == " ":
+            game_grid[pc_move] = red_text + "O" + white_text
+            player = red_text + "O" + white_text
+            return pc_move
+```
 
-2. After publishing site to GitHub Pages noted that when in mobile view and rotating landscape, approximately 300px  from the top become unaccessible by the scroll bar.
+Code finding unique value ut not returning. Marked in yellow.
 
-    <a href="https://imgur.com/DfdtvQm"><img src="https://i.imgur.com/DfdtvQm.png" title="source: imgur.com" /></a>
+<a href="https://i.imgur.com/xm5uIAk.png"><img src="https://i.imgur.com/xm5uIAk.png" title="source: imgur.com" /></a>
 
-    This was caused due to setting the main container to position absolute, once fixed and correct margin set, issue has been resolved.
+ During the troubleshooting I identified that error only occurred if function was using **game_grid** condition. This variable holds one of 3 grid arrays returned by selected game difficulty. When replaced with direct variable for example "easy_grid" no errors occurred. I have concluded that cause was due to possible delay in retrieving data.
 
-    <a href="https://imgur.com/8dwMBME"><img src="https://i.imgur.com/8dwMBME.png" title="source: imgur.com" /></a>
+Simple solution was to introduce a delay buffer to ensure data was passed through before new random number is generated.
 
+New code:
 
+```Python
+  while True:
+        pc_move = random.randint(1, new_range)
+        if game_grid[pc_move] == " ":
+            check_draw()
+            game_grid[pc_move] = red_text + "O" + white_text
+            player = red_text + "O" + white_text
+            return pc_move
+```
 ## **4.2. Integrity**
 
-HTML and CSS build was tested through the [W3C Validator](https://validator.w3.org/#validate_by_upload+with_options) .HTML file, CSS through [W3C JigSaw Validator](http://jigsaw.w3.org/css-validator/#validate_by_upload) .css file. Lastly, JavaScript through [jshint.com Validator](https://jshint.com/).
+Python build was tested through the [PEP8 online](http://pep8online.com/s) .py file. 
 
-
-**All pages have passed with no errors**
-
-* W3C Validator
-    * **index.html**
-
-        <a href="https://imgur.com/EoUVrwS"><img src="https://i.imgur.com/EoUVrwS.png" title="source: imgur.com/EdgarasSp" /></a>
-
-    * **game.html**
-
-        <a href="https://imgur.com/Jm5xbnO"><img src="https://i.imgur.com/Jm5xbnO.png" title="source: imgur.com/EdgarasSp" /></a>
-
-* W3C JigSaw Validator
-
-    * **style.css**
-
-        <a href="https://imgur.com/WBeAtJ8"><img src="https://i.imgur.com/WBeAtJ8.png" title="source: imgur.com/EdgarasSp" /></a>
-
-* jshint.com Validator
-
-    * **script.js**
-
-        <a href="https://imgur.com/8uNiSLG"><img src="https://i.imgur.com/8uNiSLG.png" title="source: imgur.com/EdgarasSp" /></a>
-
-    * **passvalue.js**
-
-        <a href="https://imgur.com/II8Q3sF"><img src="https://i.imgur.com/II8Q3sF.png" title="source: imgur.com/EdgarasSp" /></a>
-
-### **4.2.1. Responsiveness**
-
-To test performance, used to primary tools:
-
-* [www.responsinator.com](https://www.responsinator.com/?url=https%3A%2F%2Fedgarassp.github.io%2Fhangman%2Findex.html)
-
-    <a href="https://imgur.com/03VWbp6"><img src="https://i.imgur.com/03VWbp6.png" title="source: imgur.com" /></a>
-
-
-### **4.2.2. Links**
-
-Links tested:            
-
-*   Home Page:
-    * "EASY GAME" to "GAME PAGE" = **Validated**
-    * "MEDIUM GAME" to "GAME PAGE" = **Validated**
-    * "HARD GAME" "GAME PAGE" = **Validated**
-    
-
-*   Game Page:
-    * "KEY BUTTONS" action, "Guess" = **Validated**
-    * "RESTART BUTTON" action, "Restart Game" = **Validated**
-    * "MENU BUTTONS x2" action, "Back to Menu" = **Validated**
-
-
-## **4.3. Build**
-
-### **4.3.1. Performance**
-
-A lighthouse report was run for each page on the deployed github page, results below:
-
-* **Menu Page**
-
-    <a href="https://imgur.com/qlyWdcQ"><img src="https://i.imgur.com/qlyWdcQ.png" title="source: imgur.com/EdgarasSp" /></a>
-
-* **Game Page Active**
-
-    <a href="https://imgur.com/7IdodWm"><img src="https://i.imgur.com/7IdodWm.png" title="source: imgur.com/EdgarasSp" /></a>
-
-
+All pages have passed with no major errors.
 
 # **5. Road Map**
 > ##### [Table of Content](#table-of-contents)
@@ -269,51 +252,52 @@ A lighthouse report was run for each page on the deployed github page, results b
 
 ## **5.1. Essential Features**
 
-There are 4 essential features to implement in the future:
+There are 2 essential features to implement in the future:
 
-1. __Leaderboard__
-	* Create a local leaderboard for the player to compete for the high score.
-2. __Multiplayer__
-	* create new game mode to allow 2 player to play either to guess same word one player using on screen keyboard and the other using on screen keyboard. In addition players could set a word for each other to guess.
-3. __Dynamics Word Generator__
-	* Generate words from online libraries.
-4. __Continue Game function__
-	* When player wins a game, give them option to continue the streak with score increasing further. To allow more competitive leaderboards.
+1. __PvP Games__
+	* add fnction for player v player
 
-## **5.2. Additional Features**
-
-There are 2 non-essential features to implement in the future:
-
-1. __Random Word Generator__
-	* Player could generate a random letter to guess on behalf of them.
-
-2. __Share Game Option__
-	* Implement lings to share the game with other players.
+2. __Improve Random number generator__
+	* Instead of random number, create a function to check for hgh risk moves and cover them for example in 4 x 4 game if already 3 in row block 4 in next move.
 
 # **6. Deployment**
 > ##### [Table of Content](#table-of-contents)
 
 
-## **6.1. Deployment to GitHub**
+## **6.1. Deployment to \Heroku**
 
-The project was developed using [GitPod](https://gitpod.io/), pushed to [GitHub Repository](https://github.com/EdgarasSp/hangman) and deployed via GitHub pages. The steps to deploy outlined below:
+The project was developed using [GitPod](https://gitpod.io/), pushed to [GitHub Repository](https://github.com/EdgarasSp/Tic-Tac-Toe) and deployed via Heroku. The Code Institute provided a [template](https://github.com/Code-Institute-Org/python-essentials-template) which was cloned and used for the main structure of the repository.
 
+The steps to deploy outlined below:
 
-The Code Institute provided a [template](https://github.com/Code-Institute-Org/gitpod-full-template) which was cloned and used for the main structure of the repository, then created into a GitPod repository. To achieve the above, the below process can be followed for deployment:
+To deploy to Heroku from its [GitHub repository](https://github.com/EdgarasSp/Tic-Tac-Toe) the following steps were taken:
 
-1. Go to the [GitHub Repository](https://github.com/EdgarasSp/hangman) home page.
-2. Click "Settings" in the ribbon of links below the title of the project.
-3. Click "Pages" on the side bar.
-4. Select "Branch: main" where it asks for the source.
-5. Hit "Save" and wait for a few minutes.
-6. Refresh the page and click the green link with the deployed page [deployed page](https://edgarassp.github.io/hangman/).
+- Log into or register new account at [Heroku](https://www.heroku.com/).
+- Click the button **New** in top right corner of the dashboard.
+- From the drop-down menu select **Create new app**.
+- Enter your apps name in the first field and select your region.
+- Click on **Create App** if you are happy with your choices.
+- Once you the app is made you will see yourself within **Deploy** tab. Press on **Settings** tab.
+- Once you are in the **Settings** tab scroll down till you find **Config Vars**.
+- Press the button **Reveal Config Vars** and for 'KEY' field, type in PORT and for the value field type in '8000'.
+Press the **Add** button.
+- Scroll down to **Buildpacks**. Click the button **Add buildpack** and select 'python'. Do the same step and add 'node.js'.
+**PYTHON MUST BE ON TOP OF THE BUILDPACKS. IF IN YOUR CASE NODE.JS IS FIRST, CLICK AND DRAG PYTHON TO TOP AND SAVE.**
+- Return back to the **Deploy** tab. From the deployment method, select 'Github' as the deployment.
+- You will be asked to connect your github account. Confirm and proceed.
+- Search for your repository name and connect.
+- Once that is done and successfully connected, select how you want to push updates from the following options.
+
+  _Clicking **Enable Automatic Deploys**. This will update once you push updates to your Github._
+
+  _Selecting the correct branch for deployment from drop-down menu and pressing **Deploy Branch** button. This will have to be done everytime manually._
 
 ## **6.2. Cloning on GitHub**
 
 You will need to have a [GitHub ](https://github.com) account and it is advised to install the [GitPod Chrome Extension](https://www.gitpod.io/docs/browser-extension/). To clone the project into your own repository follow the below steps :
 
 1. Log in to your [GitPod account](https://gitpod.io/) .
-2. Open the [Project Repository](https://github.com/EdgarasSp/hangman) in a new tab.
+2. Open the [Project Repository](https://github.com/EdgarasSp/Tic-Tac-Toe) in a new tab.
 3. Click on the green "GitPod" button to the top right of the project.
 4. This will automatically create a new GitPod workspace for you to work on.
 5. You can type in any name of your choosing.
